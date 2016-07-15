@@ -3,9 +3,47 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="build/main.css">
 	<title></title>
+	<style type="text/css">
+	.modal {
+		display: none;
+		position: fixed;
+	}
+
+	.modal > .view-region {
+		width: 60%;
+		margin: 0 auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		height: 80vh;
+		overflow: scroll;
+		transform: translateY(-50%) translateX(-50%);
+		background-color: #fff;
+		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+		padding: 2em;
+	}
+
+	.modal.visible {
+		display: block;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	.search.hidden {
+		display: none;
+	}
+	</style>
 </head>
 <body>
 <!--Script tag should be last element in the body -->
+	<script type="text/javascript" src="node_modules/battlemanager/js/battlemanager.js"></script>
+	<script type="text/javascript" src="node_modules/battlemanager/data/messages.js"></script>
+	<script type="text/javascript">
+		BattleManager.addMessages(messages);
+	</script>
 	<script type="text/javascript" src="build/main.js"></script>
 </body>
 </html>

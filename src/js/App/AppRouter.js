@@ -2,23 +2,35 @@ var Backbone = require('backbone');
 
 var homeController = require('../Home/HomeController');
 var characterController = require('../Character/CharacterController');
+var battleController = require('../Battle/BattleController');
 
 var AppRouter = Backbone.Router.extend({
 
 	routes: {
 		'': 'home',
-		'characters/:id': 'showCharacter'
+		'characters': 'showCharacterPage',
+		'battle': 'showBattle',
+		'battle/(:left),(:right)': 'showBattle'
 	},
 
 	home: function () {
 		homeController.showHome();
 	},
 
-	showCharacter: function (id) {
-		// We only want to do both of these things when the
-		// page reloads.
+	showCharacterPage: function () {
 		characterController.showCharacterPage();
-		characterController.popupCharacter(id);
+	},
+
+	showBattle: function (left, right) {
+		battleController.showBattlePage();
+
+		if (left) {
+			battleController.selectLeft(left);
+		}
+
+		if (right) {
+			battleController.selectRight(right);
+		}
 	}
 
 });

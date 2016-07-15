@@ -4,25 +4,42 @@
 
 var Backbone = require('backbone');
 
+var battleController = require('../Battle/BattleController');
+var CharacterSearchView = require('./CharacterSearchView');
+var CharacterDetailsView = require('./CharacterDetailsView');
+
 var CharacterPageView = Backbone.View.extend({
 
 	initialize: function () {
-		this.characterSearchView = new CharacterSearchView({
-			collection: this.collection
+		this.searchView = new CharacterSearchView({
+			collection: this.collection,
+			onItemClick: function (model) {
+				var url = 'characters/vis-' + model.get('id');
+				Backbone.history.navigate(url);
+				var detailView = new CharacterDetailsView({
+					model: model,
+					onSendToBattleClick: function () {
+						battleController.showBattlePage();
+						Backbone.history.navigate('battle');
+						Backbone.trigger('modal:hide');
+					}
+				});
+				Backbone.trigger('modal:show', detailView);
+			}
 		});
-
 	},
+
+	
 
 	render: function () {
 		this.$el.html(this.template());
-		this.characterSearchView.render();
-		this.$('.search').append(this.characterSearchView.$el);
+		this.searchView.render();
+		this.$('.search').append(this.searchView.$el);
 
 	},
 
 	template: function () {
 		return `
-			<div class="banner"></div>
 			<h3>Find A Character To Battle</h3>
 			<div class="search"></div>
 		`;

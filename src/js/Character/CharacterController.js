@@ -1,21 +1,11 @@
 var Backbone = require('backbone');
 
 var CharacterModel = require('./CharacterModel');
+var CharacterCollection = require('./CharacterCollection');
+var CharacterPageView = require('./CharacterPageView');
 var CharacterDetailsView = require('./CharacterDetailsView');
 
 module.exports = {
-
-	popupCharacter: function (id) {
-		var model = new CharacterModel({ id: id });
-		
-		// Does a GET request and loads the response into the attributes
-		model.fetch({
-			success: function () {
-				var view = new CharacterDetailsView({ model: model });
-				Backbone.trigger('modal:show', view);
-			}
-		});
-	},
 
 	showCharacterPage: function () {
 		var collection = new CharacterCollection();
