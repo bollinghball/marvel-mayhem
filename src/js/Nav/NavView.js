@@ -17,17 +17,18 @@ var NavView = Backbone.View.extend({
 
 	template: function () {
 		return `
-			<li data-route="characters">CHARACTERS</li>
+			<li><button data-route="characters">CHARACTERS</button></li>
 			<li data-route="home">
 				<img src="assets/images/logo.png">
 			</li>
-			<li data-route="battle">BATTLE</li>
+			<li><button data-route="battle">BATTLE</button></li>
 		`;
 	},
 
 	handleClick: function (e) {
 		var target = $(e.target);
 		var hash = target.attr('data-route') || target.closest('[data-route]').attr('data-route');
+		
 		Backbone.history.navigate(hash, {
 			trigger: true
 		});
