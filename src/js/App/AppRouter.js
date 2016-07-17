@@ -10,6 +10,7 @@ var AppRouter = Backbone.Router.extend({
 		'(home)': 'home',
 		'characters': 'showCharacterPage',
 		'battle': 'showBattle',
+		'battle/:left': 'showBattle',
 		'battle/(:left),(:right)': 'showBattle'
 	},
 

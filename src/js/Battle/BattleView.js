@@ -98,6 +98,7 @@ var BattleView = Backbone.View.extend({
 			url += this.right.model.get('id');
 		}
 
+
 		Backbone.history.navigate(url);
 	},
 

@@ -14,16 +14,20 @@ var CharacterPageView = Backbone.View.extend({
 		this.searchView = new CharacterSearchView({
 			collection: this.collection,
 			onItemClick: function (model) {
-				var url = 'characters/vis-' + model.get('id');
-				Backbone.history.navigate(url);
 				var detailView = new CharacterDetailsView({
 					model: model,
 					onSendToBattleClick: function () {
+						// Show the battle page
 						battleController.showBattlePage();
-						Backbone.history.navigate('battle');
+						// Populate the left slot
+						battleController.selectLeft(model.get('id'));
+						// Update the URL manually
+						Backbone.history.navigate('battle/' + model.get('id'));
+						// Hide the modal
 						Backbone.trigger('modal:hide');
 					}
 				});
+				// Show the modal with the corresponding view
 				Backbone.trigger('modal:show', detailView);
 			}
 		});
