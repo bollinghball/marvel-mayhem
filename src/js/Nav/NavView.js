@@ -19,7 +19,7 @@ var NavView = Backbone.View.extend({
 		return `
 			<li><button data-route="characters">CHARACTERS</button></li>
 			<li data-route="home">
-				<img src="images/logo.jpg">
+				<img src="assets/images/logo.png">
 			</li>
 			<li><button data-route="battle">BATTLE</button></li>
 		`;

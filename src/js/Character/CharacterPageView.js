@@ -34,14 +34,14 @@ var CharacterPageView = Backbone.View.extend({
 	render: function () {
 		this.$el.html(this.template());
 		this.searchView.render();
-		this.$('.search').append(this.searchView.$el);
+		this.$('.search-region').append(this.searchView.$el);
 
 	},
 
 	template: function () {
 		return `
 			<h3>Find A Character To Battle</h3>
-			<div class="search"></div>
+			<div class="search-region"></div>
 		`;
 	}
 
