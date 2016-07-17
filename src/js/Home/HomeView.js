@@ -20,7 +20,7 @@ var HomeView = Backbone.View.extend({
 	template: function () {
 		return `
 			<div class="home-banner"></div>
-			<p>Lorem ipsum Nulla anim qui nostrud eiusmod sit reprehenderit ut irure officia irure ea occaecat pariatur nulla Ut dolore.</p>
+			<p>Battle your favorite Marvel characters in a head-to-head showdown</p>
 			<div class="recent-battles"></div>
 		`;
 	}

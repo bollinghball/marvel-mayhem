@@ -2,12 +2,14 @@
   "name": "project-scaffold",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cp node_modules/normalize.css/normalize.css lib/_normalize.css",
+    "postinstall": "cp node_modules/normalize.css/normalize.css lib/_normalize.css && cp node_modules/battlemanager/js/battlemanager.js public/ && cp node_modules/battlemanager/data/messages.js public/",
     "watch:css": "sass --watch src/scss:build",
-    "build:js": "browserify src/js/main.js -o  build/main.js"
+    "build:js": "browserify src/js/main.js -o  build/main.js",
+    "watch:js": "watchify src/js/main.js -o  build/main.js",
+    "dev": "npm start &npm run watch:css & npm run watch:js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +18,10 @@
     "jquery": "^3.1.0",
     "normalize.css": "^4.1.1",
     "underscore": "^1.8.3",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
     "battlemanager": "https://github.com/giodif/battlemanager"
   }
 }

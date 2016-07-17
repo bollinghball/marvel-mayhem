@@ -24,7 +24,7 @@ var BattleSlotView = Backbone.View.extend({
 
 	template: function (data) {
 		return `
-			<span>${data.name}</span>
+			<span>${data.thumbnail}</span>
 		`;
 	},
 

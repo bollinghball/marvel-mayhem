@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="build/main.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
 	<title></title>
 	<style type="text/css">
 	.modal {
@@ -34,16 +34,26 @@
 
 	.search.hidden {
 		display: none;
+	},
+
+	.page-region {
+		width: 100%;
+		display: block;
+	}
+
+	.character-list {
+		display: block;
+		width: 100%;
 	}
 	</style>
 </head>
 <body>
 <!--Script tag should be last element in the body -->
-	<script type="text/javascript" src="node_modules/battlemanager/js/battlemanager.js"></script>
-	<script type="text/javascript" src="node_modules/battlemanager/data/messages.js"></script>
+	<script type="text/javascript" src="battlemanager.js"></script>
+	<script type="text/javascript" src="messages.js"></script>
 	<script type="text/javascript">
 		BattleManager.addMessages(messages);
 	</script>
-	<script type="text/javascript" src="build/main.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
