@@ -8,7 +8,8 @@ var CharacterSearchView = Backbone.View.extend({
 	className: 'search',
 
 	events: {
-		'click .search-button': 'handleSearchClick'
+		'click .search-button': 'handleSearchClick',
+		'keyup :input': 'logKey'
 	},
 
 	initialize: function (options) {
@@ -47,8 +48,18 @@ var CharacterSearchView = Backbone.View.extend({
 				nameStartsWith: this.$('.search-input').val()
 			}
 		});
-	}
+	},
 
+	logKey: function (e) {
+		var val = this.$('.search-input').val();
+		if (e.keyCode === 13 && val.length > 0) {
+			this.collection.fetch({
+				data: {
+					nameStartsWith: val
+				}
+			});
+		}
+	}
 
 });
 

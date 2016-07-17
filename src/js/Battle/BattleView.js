@@ -3,10 +3,15 @@ var Backbone = require('backbone');
 var CharacterDetailsView = require('../Character/CharacterDetailsView');
 var CharacterSearchView = require('../Character/CharacterSearchView');
 var BattleSlotView = require('./BattleSlotView');
+var BattleLogView = require('./BattleLogView');
 
 var BattleView = Backbone.View.extend({
 
 	className: 'battle',
+
+	events: {
+		'click .battle-button': 'handleBattleClick'
+	},
 
 	initialize: function () {
 		var _this = this;
@@ -24,10 +29,10 @@ var BattleView = Backbone.View.extend({
 			}
 		});
 		this.left = new BattleSlotView({
-			onRemove: this.onDetailsRemove.bind(this)
+			onRemove: this.checkReadyAndUpdateURL.bind(this)
 		});
 		this.right = new BattleSlotView({
-			onRemove: this.onDetailsRemove.bind(this)
+			onRemove: this.checkReadyAndUpdateURL.bind(this)
 		});
 	},
 
@@ -50,6 +55,8 @@ var BattleView = Backbone.View.extend({
 		return `
 			<div class="battle-slots-region"></div>
 			<div class="search-region"></div>
+			<button class="battle-button">LET'S BATTLE!</button>
+			<div class="log-region"></div>
 		`;
 	},
 
@@ -60,10 +67,21 @@ var BattleView = Backbone.View.extend({
 			this.right.setCharacter(model);
 		}
 
-		this.updateURL();
+		this.checkReadyAndUpdateURL();
+	},
 
+	checkReadyAndUpdateURL: function () {
+		this.updateURL();
+		this.checkReady();
+	},
+
+	checkReady: function () {
 		if (this.left.model && this.right.model) {
 			this.searchView.hide();
+			this.$('.battle-button').addClass('active');
+		} else {
+			this.searchView.show();
+			this.$('.battle-button').removeClass('active');
 		}
 	},
 
@@ -83,13 +101,25 @@ var BattleView = Backbone.View.extend({
 		Backbone.history.navigate(url);
 	},
 
-	showSearch: function () {
-		this.searchView.show();
-	},
+	handleBattleClick: function () {
+		var left = this.left.model;
+		var right = this.right.model;
 
-	onDetailsRemove: function () {
-		this.updateURL();
-		this.showSearch();
+		var battleLog = new BattleLogView({
+			left: left,
+			right: right
+		});
+
+		if (!left.stats.loaded) {
+			left.stats.once('sync', this.handleBattleClick.bind(this));
+			return;
+		}
+		if (!right.stats.loaded) {
+			right.stats.once('sync', this.handleBattleClick.bind(this));
+			return;
+		}
+
+		battleLog.start();
 	}
 
 });

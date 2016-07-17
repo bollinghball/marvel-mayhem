@@ -7,7 +7,7 @@ var battleController = require('../Battle/BattleController');
 var AppRouter = Backbone.Router.extend({
 
 	routes: {
-		'': 'home',
+		'(home)': 'home',
 		'characters': 'showCharacterPage',
 		'battle': 'showBattle',
 		'battle/(:left),(:right)': 'showBattle'

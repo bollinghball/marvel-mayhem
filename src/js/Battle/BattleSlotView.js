@@ -2,6 +2,9 @@
 
 var Backbone = require('backbone');
 
+var CharacterModel = require('../Character/CharacterModel');
+var api = require('../API/marvel');
+
 var BattleSlotView = Backbone.View.extend({
 
 	events: {
@@ -13,10 +16,15 @@ var BattleSlotView = Backbone.View.extend({
 	},
 
 	render: function () {
+
+		var thumbnail;
 		var data;
 		if (this.model) {
+			thumbnail = this.model.get('thumbnail');
 			data = this.model.toJSON();
-			this.$el.html(this.template(data));
+			this.$el.html(this.template({
+				thumbnail: thumbnail.path + '/standard_medium' + '.' + thumbnail.extension
+			}));
 		} else {
 			this.$el.html(this.emptyTemplate());
 		}
@@ -24,7 +32,7 @@ var BattleSlotView = Backbone.View.extend({
 
 	template: function (data) {
 		return `
-			<span>${data.thumbnail}</span>
+			<img src="${data.thumbnail}">
 		`;
 	},
 

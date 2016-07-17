@@ -20,6 +20,7 @@ module.exports = {
 		model.fetch({
 			success: function () {
 				_this.battleView.left.setCharacter(model);
+				_this.battleView.checkReady();
 			}
 		});
 	},
@@ -31,6 +32,7 @@ module.exports = {
 		model.fetch({
 			success: function () {
 				_this.battleView.right.setCharacter(model);
+				_this.battleView.checkReady();
 			}
 		});
 	}
