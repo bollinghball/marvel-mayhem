@@ -19,6 +19,19 @@ var CharacterModel = Backbone.Model.extend({
 			return response;
 		}
 		return response.data.results[0];
+	},
+
+	getThumbnail: function (variant) {
+		var thumbnail = this.get('thumbnail');
+		var image = thumbnail.path;
+
+		if (variant) {
+			image += '/' + variant;
+		}
+
+		image += '.' + thumbnail.extension;
+
+		return image;
 	}
 
 });

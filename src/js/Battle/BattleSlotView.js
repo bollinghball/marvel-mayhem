@@ -23,7 +23,7 @@ var BattleSlotView = Backbone.View.extend({
 			thumbnail = this.model.get('thumbnail');
 			data = this.model.toJSON();
 			this.$el.html(this.template({
-				thumbnail: thumbnail.path + '/standard_medium' + '.' + thumbnail.extension
+				thumbnail: this.model.getThumbnail()
 			}));
 		} else {
 			this.$el.html(this.emptyTemplate());
@@ -32,7 +32,7 @@ var BattleSlotView = Backbone.View.extend({
 
 	template: function (data) {
 		return `
-			<img src="${data.thumbnail}">
+			<div style="background-image: url(${data.thumbnail})"></div>
 		`;
 	},
 
