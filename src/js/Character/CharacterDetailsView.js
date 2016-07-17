@@ -22,10 +22,12 @@ var CharacterDetailsView = Backbone.View.extend({
 	template: function (data) {
 		return `
 			<img src="${data.thumbnail}">
-			<h2>${data.name}</h2
-			<p>${data.description}</p>
-			<button class="send">Send to Battle</button>
-			<div class="stats">
+			<div class="details">
+				<h2>${data.name}</h2
+				<p>${data.description}</p>
+				<button class="send">Send to Battle</button>
+			</div>
+			<div class="stats cf">
 				<ul>
 					<li>Durability</li>
 					<li>Energy</li>
