@@ -10,7 +10,7 @@ var StatsModel = Backbone.Model.extend({
 		this.on('sync', function () {
 			//flag self as loaded
 			_this.loaded = true;
-		})
+		});
 	},
  
 	defaults: {

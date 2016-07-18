@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 
 var homeController = require('../Home/HomeController');
 var characterController = require('../Character/CharacterController');
-var battleController = require('../Battle/BattleController');
+var battle = require('../Battle/controller');
 
 var AppRouter = Backbone.Router.extend({
 
@@ -23,15 +23,7 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	showBattle: function (left, right) {
-		battleController.showBattlePage();
-
-		if (left) {
-			battleController.selectLeft(left);
-		}
-
-		if (right) {
-			battleController.selectRight(right);
-		}
+		battle.showBattlePage(left, right);
 	}
 
 });

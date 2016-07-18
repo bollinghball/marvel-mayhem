@@ -15,7 +15,8 @@ var CharacterDetailsView = Backbone.View.extend({
 		this.$el.html(this.template({
 			name: this.model.get('name'),
 			thumbnail: thumbnail.path + '/portrait_uncanny' + '.' + thumbnail.extension,
-			description: this.model.get('description')
+			description: this.model.get('description'),
+			hasStats: this.model.stats.loaded
 		}));
 	},
 
@@ -25,7 +26,7 @@ var CharacterDetailsView = Backbone.View.extend({
 			<div class="details">
 				<h2>${data.name}</h2
 				<p>${data.description}</p>
-				<button class="send">Send to Battle</button>
+				${data.hasStats ? '<button class="send">Send to Battle</button>' : ''}
 			</div>
 			<div class="stats cf">
 				<ul>

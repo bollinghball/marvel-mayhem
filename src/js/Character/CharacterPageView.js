@@ -4,7 +4,7 @@
 
 var Backbone = require('backbone');
 
-var battleController = require('../Battle/BattleController');
+var battle = require('../Battle/controller');
 var CharacterSearchView = require('./CharacterSearchView');
 var CharacterDetailsView = require('./CharacterDetailsView');
 
@@ -17,10 +17,8 @@ var CharacterPageView = Backbone.View.extend({
 				var detailView = new CharacterDetailsView({
 					model: model,
 					onSendToBattleClick: function () {
-						// Show the battle page
-						battleController.showBattlePage();
-						// Populate the left slot
-						battleController.selectLeft(model.get('id'));
+						// Show the battle page with the left slot populated
+						battle.showBattlePage(model.get('id'));
 						// Update the URL manually
 						Backbone.history.navigate('battle/' + model.get('id'));
 						// Hide the modal

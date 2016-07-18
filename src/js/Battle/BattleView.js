@@ -118,16 +118,23 @@ var BattleView = Backbone.View.extend({
 		this.$('.log-region')
 			.append(battleLog.$el);
 
-		if (!left.stats.loaded) {
-			left.stats.once('sync', this.handleBattleClick.bind(this));
-			return;
-		}
-		if (!right.stats.loaded) {
-			right.stats.once('sync', this.handleBattleClick.bind(this));
-			return;
+		function fetchLeft () {
+			left.stats.fetch({
+				success: function () {
+					fetchRight();
+				}
+			});
 		}
 
-		battleLog.start();
+		function fetchRight () {
+			right.stats.fetch({
+				success: function () {
+					battleLog.start();
+				}
+			});
+		}
+
+		fetchLeft();
 	}
 
 });

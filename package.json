@@ -21,7 +21,8 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "battlemanager": "https://github.com/giodif/battlemanager"
+    "battlemanager": "https://github.com/giodif/battlemanager",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
   }
 }
