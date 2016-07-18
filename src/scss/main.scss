@@ -1,3 +1,20 @@
+@font-face {
+	font-family: 'BackIssues';
+	src: url('../public/assets/fonts/BackIssuesBB_reg.ttf');
+}
+
+body {
+	font-family: 'BackIssues';
+	background: rgba(255,229,173,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,229,173,1)), color-stop(100%, rgba(245,151,0,1)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
+	background: radial-gradient(ellipse at center, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe5ad', endColorstr='#f59700', GradientType=1 );
+}
+
 .nav {
 
 	text-decoration: none;
@@ -16,6 +33,7 @@
 
 		img {
 			width: 70%;
+			max-width: 263px;
 		}
 	}
 
@@ -27,13 +45,37 @@
 		border: none;
 		background-color: transparent;
 		outline: none;
+		font-family: 'Back';
+		font-size: 20px;
+		letter-spacing: .1em;
+
+		&:hover {
+			text-shadow: 2px 2px #ff0000;
+		}
 	}
 
 }
+.home {
+	width: 100%;
+	position: absolute;
+	top: 100px;
+	z-index: -1;
+
+}
+
+.home-banner {
+	background-image: url('assets/images/The_Marvel_Universe.png');
+	width: 100%;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 50vw;
+}
+
+.headline {
+	text-align: center;
+}
 
 .page-region {
-	// position: absolute;
-	top: 250px;
 	width: 100%;
 
 	div {
@@ -45,7 +87,7 @@
 		.search {
 			width: 100%;
 
-			.hidden {
+			&.hidden {
 				display: none;
 			}
 		}
@@ -71,15 +113,25 @@
 	.battle {
 		width: 100%;
 	}
-	.battle-slots-region {
-		width: 100%;
 
-		div {
+	.battle-slots-region {
+
+		> div {
 			box-sizing: border-box;
 			width: 50%;
 			float: left;
 			border: 1px solid black;
 			height: 400px;
+			background-color: white;
+
+			p {
+				text-align: center;
+			}
+
+			> div {
+				background-size: cover;
+				height: inherit;
+			}
 		}
 	}
 
@@ -148,6 +200,7 @@
 	}
 
 }
+
 
 .cf {
 	:before {

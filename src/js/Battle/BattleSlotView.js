@@ -38,7 +38,8 @@ var BattleSlotView = Backbone.View.extend({
 
 	emptyTemplate: function () {
 		return `
-			<span>Empty!</span>
+			<p>You need two contestants to battle!</p>
+			<p>Search for a character below or pick one of our top battlers!</p>
 		`;
 	},
 
