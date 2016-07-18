@@ -111,6 +111,13 @@ var BattleView = Backbone.View.extend({
 			right: right
 		});
 
+		battleLog.render();
+
+		this.$('.log-region').empty();
+
+		this.$('.log-region')
+			.append(battleLog.$el);
+
 		if (!left.stats.loaded) {
 			left.stats.once('sync', this.handleBattleClick.bind(this));
 			return;
