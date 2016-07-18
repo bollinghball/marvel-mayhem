@@ -35,6 +35,16 @@ module.exports = {
 				_this.battleView.checkReady();
 			}
 		});
+	},
+
+	createBattle: function (left, right, winner) {
+		var battle = new BattleModel({
+			left: left,
+			right: right,
+			winner: winner
+		});
+
+		battle.save();
 	}
 
 };

@@ -20,4 +20,8 @@ app.get('/stats/:id', function (req, res) {
 	res.json(stat);
 });
 
+// app.post('/battle', function(req, res) {
+	
+// })
+
 app.listen(8000);

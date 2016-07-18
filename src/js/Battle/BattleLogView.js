@@ -24,6 +24,9 @@ var BattleLogView = Backbone.View.extend({
 	start: function () {
 		var results = BattleManager.narrativeBattle(this.left.stats.toJSON(), this.right.stats.toJSON());
 		console.log(results);
+
+		// battleController.createBattle(this.left.get('id'), this.right.get('id'), this.winner.get('results'))
+
 		var x = -1;
 		var battleInterval = window.setInterval(function(){
 			x++;

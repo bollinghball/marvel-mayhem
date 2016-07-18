@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 
+var BattleCollection = require('../Battle/BattleCollection');
 var StatsModel = require('../Stats/StatsModel');
 var api = require('../API/marvel');
 
@@ -7,6 +8,12 @@ var CharacterModel = Backbone.Model.extend({
 
 	initialize: function () {
 		this.stats = new StatsModel({ id: this.get('id') });
+		// this.battles = new BattleCollection();
+		// this.battles.fetch({
+		// 	data: {
+		// 		characterId: this.get('id')
+		// 	}
+		// });
 		this.stats.fetch();
 	},
 
