@@ -13,6 +13,7 @@ var BattleSlotView = Backbone.View.extend({
 
 	initialize: function (options) {
 		this.onRemove = options.onRemove;
+		this.active = true;
 	},
 
 	render: function () {
@@ -48,10 +49,16 @@ var BattleSlotView = Backbone.View.extend({
 		this.render();
 	},
 
+	toggleActive: function (){
+		this.active = !this.active;
+	},
+
 	removeCharacter: function () {
-		this.model = null;
-		this.render();
-		this.onRemove();
+		if(this.active){
+			this.model = null;
+			this.render();
+			this.onRemove();
+		}
 	}
 
 });

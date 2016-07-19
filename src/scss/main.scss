@@ -342,6 +342,11 @@ body {
 		border-bottom: none;
 		border-radius: 0 20px 0 0;
 		line-height: 30px;
+		display: none;
+	}
+
+	button.active {	
+		display: inline-block;
 	}
 
 	.log-button {
@@ -355,7 +360,6 @@ body {
 	}
 
 	.log {
-
 		ul {
 			list-style: none;
 

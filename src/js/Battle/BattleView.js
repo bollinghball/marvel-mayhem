@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-
+var $ = require('jquery');
 var CharacterDetailsView = require('../Character/CharacterDetailsView');
 var CharacterSearchView = require('../Character/CharacterSearchView');
 var BattleSlotView = require('./BattleSlotView');
@@ -26,6 +26,12 @@ var BattleView = Backbone.View.extend({
 					}
 				});
 				Backbone.trigger('modal:show', detailView);
+
+				$(".send").click(function() {
+    				$('html, body').animate({
+        				scrollTop: $(".nav-region").offset().top
+    				}, 500);
+				});
 			}
 		});
 		this.left = new BattleSlotView({
@@ -76,11 +82,16 @@ var BattleView = Backbone.View.extend({
 	},
 
 	checkReady: function () {
+		var _this = this;
 		if (this.left.model && this.right.model) {
-			this.searchView.hide();
+			setTimeout(function () {
+				_this.searchView.hide();
+			}, 500);
 			this.$('.battle-button').addClass('active');
 		} else {
-			this.searchView.show();
+			setTimeout(function () {
+				_this.searchView.show();
+			}, 500);
 			this.$('.battle-button').removeClass('active');
 		}
 	},
@@ -102,7 +113,18 @@ var BattleView = Backbone.View.extend({
 		Backbone.history.navigate(url);
 	},
 
+	toggleActive: function (){
+		var _this = this;
+		_this.left.toggleActive();
+		_this.right.toggleActive();
+	},
+
 	handleBattleClick: function () {
+
+		var _this = this;
+
+		_this.toggleActive();
+
 		var left = this.left.model;
 		var right = this.right.model;
 
@@ -119,6 +141,10 @@ var BattleView = Backbone.View.extend({
 
 		this.$('.log-region')
 			.append(battleLog.$el);
+
+		battleLog.bindEvents();
+
+		this.listenTo(battleLog, 'finished', this.toggleActive)
 
 		function fetchLeft () {
 			left.stats.fetch({
