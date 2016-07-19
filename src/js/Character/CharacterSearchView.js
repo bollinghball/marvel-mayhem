@@ -58,6 +58,8 @@ var CharacterSearchView = Backbone.View.extend({
 					nameStartsWith: val
 				}
 			});
+		
+		this.$('.search-input').val('')
 		}
 	}
 
