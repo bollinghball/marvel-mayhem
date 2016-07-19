@@ -53,7 +53,7 @@ var BattleView = Backbone.View.extend({
 
 	template: function () {
 		return `
-			<div class="battle-slots-region"></div>
+			<div class="battle-slots-region cf"></div>
 			<div class="search-region"></div>
 			<button class="battle-button">LET'S BATTLE!</button>
 			<div class="log-region"></div>
