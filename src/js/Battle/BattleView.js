@@ -115,6 +115,8 @@ var BattleView = Backbone.View.extend({
 
 		this.$('.log-region').empty();
 
+		this.$('.battle-button').removeClass('active');
+
 		this.$('.log-region')
 			.append(battleLog.$el);
 
