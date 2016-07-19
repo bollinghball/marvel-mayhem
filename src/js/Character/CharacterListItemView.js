@@ -19,7 +19,7 @@ var CharacterListItemView = Backbone.View.extend({
 		var thumbnail = this.model.get('thumbnail');
 		this.$el.html(this.template({
 			name: this.model.get('name'),
-			thumbnail: thumbnail.path + '/standard_medium' + '.' + thumbnail.extension
+			thumbnail: thumbnail.path + '/standard_xlarge' + '.' + thumbnail.extension
 		}));
 	},
 
