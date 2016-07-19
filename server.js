@@ -20,4 +20,4 @@ app.get('/stats/:id', function (req, res) {
 	res.json(stat);
 });
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
