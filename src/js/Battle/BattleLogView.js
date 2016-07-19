@@ -16,8 +16,10 @@ var BattleLogView = Backbone.View.extend({
 
 	template: function () {
 		return `
-			<button>Log</button>
-			<button>Results</button>
+			<div class="tabs cf">
+				<button class="log-button">Log</button>
+				<button class="results-button">Results</button>
+			</div>
 			<div class="tab active log"></div>
 			<div class="tab results"><ul></ul></div>
 		`;

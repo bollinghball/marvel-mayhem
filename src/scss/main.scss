@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'BackIssues';
-	src: url('../public/assets/fonts/BackIssuesBB_reg.ttf');
+	src: url('assets/fonts/BackIssuesBB_reg.ttf');
 }
 
 body {
@@ -21,8 +21,8 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0;
-	// position: absolute;
 	text-align: center;
+	font-size: 0px;
 
 	li {
 		display: inline-block;
@@ -45,7 +45,7 @@ body {
 		border: none;
 		background-color: transparent;
 		outline: none;
-		font-family: 'Back';
+		font-family: 'BackIssues';
 		font-size: 20px;
 		letter-spacing: .1em;
 
@@ -115,6 +115,7 @@ body {
 	}
 
 	.battle-slots-region {
+		height: 400px;
 
 		> div {
 			box-sizing: border-box;
@@ -135,6 +136,15 @@ body {
 		}
 	}
 
+}
+
+.battle-button {
+	display: block;
+	text-align: center;
+	height: 5em;
+	background-color: red;
+	margin: 2em auto;
+	width: 30%;
 }
 
 .character-list {
@@ -201,12 +211,51 @@ body {
 
 }
 
+.log-region {
+	width: 80%;
+	margin: 0 auto;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 20px 20px 0 0;;
+
+
+	.tabs {
+		text-align: center;
+		font-size: 0px;
+		height: 30px;
+		line-height: 30px;
+	}
+
+	button {
+		width: 50%;
+		box-sizing: border-box;
+		border-bottom: none;
+		border-radius: 0 20px 0 0;
+		line-height: 30px;
+	}
+
+	.log-button {
+		background-color: white;
+		border-left: white;
+		border-radius: 20px 0 0 0;
+	}
+
+	.results {
+		ul {
+			list-style: none;
+			
+			  li {
+			 	padding-bottom: 20px;
+			 }
+		}
+	}
+}
 
 .cf {
-	:before {
+	:after {
 		content: '';
 		display: table;
-		clear: left;
+		clear: both;
 	}
 }
 
