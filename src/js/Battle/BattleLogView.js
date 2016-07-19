@@ -20,9 +20,10 @@ var BattleLogView = Backbone.View.extend({
 				<button class="log-button">Log</button>
 				<button class="results-button">Results</button>
 			</div>
-			<div class="tab active log"></div>
-			<div class="tab results">
+			<div class="tab active log">
 				<ul></ul>
+			</div>
+			<div class="tab results">
 			</div>
 				
 		`;
@@ -61,7 +62,7 @@ var BattleLogView = Backbone.View.extend({
 				healthbars[1].innerText = parseInt(results.fightData[x].attackerWounds);
 				healthbars[0].innerText = parseInt(results.fightData[x].defenderWounds);
 			};
-			$('.results ul').prepend(li);
+			$('.log ul').prepend(li);
 		}, 1000);
 	}
 
