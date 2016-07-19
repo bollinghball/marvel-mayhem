@@ -55,6 +55,7 @@ var BattleLogView = Backbone.View.extend({
 		var battleInterval = window.setInterval(function(){
 			x++;
 			if(x>results.fightData.length-2){
+				$('.log-region button').toggleClass('active');
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');
