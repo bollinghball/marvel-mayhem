@@ -270,7 +270,12 @@ body {
 		border-radius: 20px 0 0 0;
 	}
 
-	.results {
+	.tab {
+		display: none;
+	}
+
+	.log {
+
 		ul {
 			list-style: none;
 
@@ -278,6 +283,10 @@ body {
 			 	padding-bottom: 20px;
 			 }
 		}
+	}
+
+	.active {
+		display: block;
 	}
 }
 
