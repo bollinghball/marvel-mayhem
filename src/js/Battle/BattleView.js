@@ -53,7 +53,7 @@ var BattleView = Backbone.View.extend({
 
 	template: function () {
 		return `
-			<div class="battle-slots-region"></div>
+			<div class="battle-slots-region cf"></div>
 			<div class="search-region"></div>
 			<button class="battle-button">LET'S BATTLE!</button>
 			<div class="log-region"></div>
@@ -115,19 +115,28 @@ var BattleView = Backbone.View.extend({
 
 		this.$('.log-region').empty();
 
+		this.$('.battle-button').removeClass('active');
+
 		this.$('.log-region')
 			.append(battleLog.$el);
 
-		if (!left.stats.loaded) {
-			left.stats.once('sync', this.handleBattleClick.bind(this));
-			return;
-		}
-		if (!right.stats.loaded) {
-			right.stats.once('sync', this.handleBattleClick.bind(this));
-			return;
+		function fetchLeft () {
+			left.stats.fetch({
+				success: function () {
+					fetchRight();
+				}
+			});
 		}
 
-		battleLog.start();
+		function fetchRight () {
+			right.stats.fetch({
+				success: function () {
+					battleLog.start();
+				}
+			});
+		}
+
+		fetchLeft();
 	}
 
 });

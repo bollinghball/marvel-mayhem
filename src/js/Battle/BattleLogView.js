@@ -1,5 +1,7 @@
 var Backbone = require('backbone');
-var $ = require('jQuery');
+var $ = require('jquery');
+
+var BattleModel = require('./BattleModel');
 
 var BattleLogView = Backbone.View.extend({
 
@@ -14,8 +16,10 @@ var BattleLogView = Backbone.View.extend({
 
 	template: function () {
 		return `
-			<button>Log</button>
-			<button>Results</button>
+			<div class="tabs cf">
+				<button class="log-button">Log</button>
+				<button class="results-button">Results</button>
+			</div>
 			<div class="tab active log"></div>
 			<div class="tab results"><ul></ul></div>
 		`;
@@ -23,7 +27,16 @@ var BattleLogView = Backbone.View.extend({
 
 	start: function () {
 		var results = BattleManager.narrativeBattle(this.left.stats.toJSON(), this.right.stats.toJSON());
-		console.log(results);
+		var winner = results.winner.id;
+
+		var battle = new BattleModel({
+			left: this.left.get('id'),
+			right: this.right.get('id'),
+			winner: winner
+		});
+
+		battle.save();
+
 		var x = -1;
 		var battleInterval = window.setInterval(function(){
 			x++;

@@ -23,7 +23,9 @@
     "normalize.css": "^4.1.1"
   },
   "dependencies": {
+    "battlemanager": "https://github.com/giodif/battlemanager",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "battlemanager": "https://github.com/giodif/battlemanager"
+    "node-uuid": "^1.4.7"
   }
 }
