@@ -61,7 +61,7 @@ var BattleLogView = Backbone.View.extend({
 				healthbars[1].innerText = parseInt(results.fightData[x].attackerWounds);
 				healthbars[0].innerText = parseInt(results.fightData[x].defenderWounds);
 			};
-			$('.results ul').append(li);
+			$('.results ul').prepend(li);
 		}, 1000);
 	}
 
