@@ -27,7 +27,7 @@ var BattleLogView = Backbone.View.extend({
 		var x = -1;
 		var battleInterval = window.setInterval(function(){
 			x++;
-			if(x>results.fightData.length){
+			if(x>=results.fightData.length){
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');
