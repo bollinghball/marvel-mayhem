@@ -25,9 +25,11 @@ var AppView = Backbone.View.extend({
 
 	template: function () {
 		return `
-			<div class="nav-region"></div>
-			<div class="page-region"></div>
-			<div class="modal-region"></div>
+			<div class="halftone-overlay">
+				<div class="nav-region"></div>
+				<div class="page-region"></div>
+				<div class="modal-region"></div>
+			</div>
 		`; 
 	},
 
