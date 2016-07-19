@@ -21,7 +21,11 @@ var BattleLogView = Backbone.View.extend({
 				<button class="results-button">Results</button>
 			</div>
 			<div class="tab active log"></div>
-			<div class="tab results"><ul></ul></div>
+			<button class="battle-again">Fight Another Battle</button>
+			<div class="tab results">
+				<ul></ul>
+			</div>
+				
 		`;
 	},
 
