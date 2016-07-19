@@ -32,7 +32,7 @@ var BattleSlotView = Backbone.View.extend({
 
 	template: function (data) {
 		return `
-			<div style="background-image: url(${data.thumbnail})"></div>
+			<div style="background-image: url(${data.thumbnail})"><div class="health"></div></div>
 		`;
 	},
 

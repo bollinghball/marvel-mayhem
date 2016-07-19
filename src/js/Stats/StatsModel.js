@@ -22,7 +22,7 @@ var StatsModel = Backbone.Model.extend({
 		strength: 0
 	},
 
-	urlRoot: 'http://localhost:8000/stats'
+	urlRoot: '/stats'
 
 });
 

@@ -8,9 +8,15 @@ var battle = require('../Battle/controller');
 var CharacterSearchView = require('./CharacterSearchView');
 var CharacterDetailsView = require('./CharacterDetailsView');
 
+var RecentBattlesView = require('../Battle/RecentBattlesView');
+
 var CharacterPageView = Backbone.View.extend({
 
-	initialize: function () {
+	initialize: function (options) {
+		var battles = options.battles;
+		this.recentBattlesView = new RecentBattlesView({
+			collection: battles
+		});
 		this.searchView = new CharacterSearchView({
 			collection: this.collection,
 			onItemClick: function (model) {

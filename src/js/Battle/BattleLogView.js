@@ -21,13 +21,18 @@ var BattleLogView = Backbone.View.extend({
 				<button class="results-button">Results</button>
 			</div>
 			<div class="tab active log"></div>
-			<div class="tab results"><ul></ul></div>
+			<div class="tab results">
+				<ul></ul>
+			</div>
+				
 		`;
 	},
 
 	start: function () {
 		var results = BattleManager.narrativeBattle(this.left.stats.toJSON(), this.right.stats.toJSON());
 		var winner = results.winner.id;
+
+		console.log(results);
 
 		var battle = new BattleModel({
 			left: this.left.get('id'),
@@ -37,14 +42,25 @@ var BattleLogView = Backbone.View.extend({
 
 		battle.save();
 
+		var _this = this;
+		var healthbars = $('.health');
+		console.log(healthbars);
+
 		var x = -1;
 		var battleInterval = window.setInterval(function(){
 			x++;
-			if(x>results.fightData.length){
+			if(x>results.fightData.length-2){
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');
 			li.text(results.fightData[x].message);
+			if(results.fightData[x].attackerName === _this.left.attributes.name){
+				healthbars[0].innerText = parseInt(results.fightData[x].attackerWounds);
+				healthbars[1].innerText = parseInt(results.fightData[x].defenderWounds);
+			} else {
+				healthbars[1].innerText = parseInt(results.fightData[x].attackerWounds);
+				healthbars[0].innerText = parseInt(results.fightData[x].defenderWounds);
+			};
 			$('.results ul').append(li);
 		}, 1000);
 	}
