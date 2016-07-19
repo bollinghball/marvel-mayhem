@@ -4,7 +4,7 @@ var BattleModel = require('./BattleModel');
 
 var BattleCollection = new Backbone.Collection.extend({
 	model: BattleModel,
-	url: 'http://localhost:8000/battles'
+	url: '/battles'
 });
 
 module.exports = BattleCollection;
