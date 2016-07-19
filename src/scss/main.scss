@@ -13,6 +13,20 @@ body {
 	background: -ms-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: radial-gradient(ellipse at center, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe5ad', endColorstr='#f59700', GradientType=1 );
+	margin: 0;
+}
+
+.halftone-overlay {
+	background-image: url('assets/images/halftone.png');
+	background-size: 4px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.page-overlay {
+	position: relative;
+	z-index: 2;
 }
 
 .nav {
@@ -60,7 +74,7 @@ body {
 	width: 100%;
 	position: absolute;
 	top: 100px;
-	z-index: -1;
+	z-index: 1;
 
 }
 
