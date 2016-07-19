@@ -14,6 +14,10 @@ var BattleLogView = Backbone.View.extend({
 		this.$el.html(this.template());
 	},
 
+	bindEvents: function(){
+
+	},
+
 	template: function () {
 		return `
 			<div class="tabs cf">
@@ -45,7 +49,7 @@ var BattleLogView = Backbone.View.extend({
 
 		var _this = this;
 		var healthbars = $('.health');
-		console.log(healthbars);
+		console.log($(healthbars[0]));
 
 		var x = -1;
 		var battleInterval = window.setInterval(function(){
@@ -56,11 +60,11 @@ var BattleLogView = Backbone.View.extend({
 			var li = $('<li/>');
 			li.text(results.fightData[x].message);
 			if(results.fightData[x].attackerName === _this.left.attributes.name){
-				healthbars[0].innerText = parseInt(results.fightData[x].attackerWounds);
-				healthbars[1].innerText = parseInt(results.fightData[x].defenderWounds);
+				healthbars[0].setAttribute('data-health', parseInt(results.fightData[x].attackerWounds));
+				healthbars[1].setAttribute('data-health', parseInt(results.fightData[x].defenderWounds));
 			} else {
-				healthbars[1].innerText = parseInt(results.fightData[x].attackerWounds);
-				healthbars[0].innerText = parseInt(results.fightData[x].defenderWounds);
+				healthbars[1].setAttribute('data-health', parseInt(results.fightData[x].attackerWounds));
+				healthbars[0].setAttribute('data-health', parseInt(results.fightData[x].defenderWounds));
 			};
 			$('.log ul').prepend(li);
 		}, 1000);
