@@ -1,4 +1,5 @@
 var Backbone = require('backbone');
+var $ = require('jquery');
 
 var CharacterDetailsView = Backbone.View.extend({
 
@@ -8,6 +9,8 @@ var CharacterDetailsView = Backbone.View.extend({
 
 	initialize: function (options) {
 		this.onSendToBattleClick = options.onSendToBattleClick;
+		// this.model.stats.on('sync', this.render.bind(this));
+		// this.model.battles.on('update', this.render.bind(this));
 	},
 
 	render: function () {
@@ -16,7 +19,10 @@ var CharacterDetailsView = Backbone.View.extend({
 			name: this.model.get('name'),
 			thumbnail: thumbnail.path + '/portrait_uncanny' + '.' + thumbnail.extension,
 			description: this.model.get('description'),
-			hasStats: this.model.stats.loaded
+			hasStats: this.model.stats.loaded,
+			stats: this.model.stats.toJSON(),
+			wins: this.model.getWins().length,
+			losses: this.model.getLosses().length
 		}));
 	},
 
@@ -26,22 +32,46 @@ var CharacterDetailsView = Backbone.View.extend({
 			<div class="details">
 				<h2>${data.name}</h2>
 				<p>${data.description}</p>
+				<div>
+					<div class="wins">
+						<h3>Wins</h3>
+						${data.wins}
+					</div>
+					<div class="losses">
+						<h3>Losses</h3>
+						${data.losses}
+					</div>
+				</div>
+
 				${data.hasStats ? '<button class="send">Send to Battle</button>' : ''}
 			</div>
 			<div class="stats">
-				<ul>
-					<li>Durability</li>
-					<li>Energy</li>
-					<li>Fighting</li>
-					<li>Intelligence</li>
-					<li>Speed</li>
-					<li>Strength</li>
-				</ul>
+				<div class="labels">
+					<ul>
+						<li>Durability</li>
+						<li>Energy</li>
+						<li>Fighting</li>
+						<li>Intelligence</li>
+						<li>Speed</li>
+						<li>Strength</li>
+					</ul>
+				</div>
+				<div class="stats-values">
+					<div class="durability" style="width:${data.stats.durability / 7 * 100}%"></div>
+					<div class="energy" style="width:${data.stats.energy / 7 * 100}%"></div>
+					<div class="fighting" style="width:${data.stats.fighting / 7 * 100}%"></div>
+					<div class="intelligence" style="width:${data.stats.intelligence / 7 * 100}%"></div>
+					<div class="speed" style="width:${data.stats.speed / 7 * 100}%"></div>
+					<div class="strength" style="width:${data.stats.strength / 7 * 100}%"></div>
+				</div>
 			</div>
+
+			
 		`;
 	},
 
 	sendToBattle: function () {
+
 		this.onSendToBattleClick();
 	}
 

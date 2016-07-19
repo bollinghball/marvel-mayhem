@@ -7,13 +7,16 @@ var api = require('../API/marvel');
 var CharacterModel = Backbone.Model.extend({
 
 	initialize: function () {
-		this.stats = new StatsModel({ id: this.get('id') });
-		// this.battles = new BattleCollection();
-		// this.battles.fetch({
-		// 	data: {
-		// 		characterId: this.get('id')
-		// 	}
-		// });
+		this.stats = new StatsModel({ 
+			id: this.get('id') 
+		});
+
+		this.battles = new BattleCollection();
+		this.battles.fetch({
+			data: {
+				characterId: this.get('id')
+			}
+		});
 		this.stats.fetch();
 	},
 
@@ -39,6 +42,23 @@ var CharacterModel = Backbone.Model.extend({
 		image += '.' + thumbnail.extension;
 
 		return image;
+	},
+
+	getWins: function () {
+		var wins = this.battles.filter(function (battle) {
+			return battle.get('winner') === this.get('id');
+		});
+
+		return wins;
+	},
+
+	getLosses: function () {
+		var _this = this;
+
+		return this.battles.filter(function (battle) {
+			var winner = battle.get('winner');
+			return winner !== null && winner !== _this.get('id');
+		});
 	}
 
 });
