@@ -102,7 +102,18 @@ var BattleView = Backbone.View.extend({
 		Backbone.history.navigate(url);
 	},
 
+	toggleActive: function (){
+		var _this = this;
+		_this.left.toggleActive();
+		_this.right.toggleActive();
+	},
+
 	handleBattleClick: function () {
+
+		var _this = this;
+
+		_this.toggleActive();
+
 		var left = this.left.model;
 		var right = this.right.model;
 
@@ -119,6 +130,10 @@ var BattleView = Backbone.View.extend({
 
 		this.$('.log-region')
 			.append(battleLog.$el);
+
+		battleLog.bindEvents();
+
+		this.listenTo(battleLog, 'finished', this.toggleActive)
 
 		function fetchLeft () {
 			left.stats.fetch({
