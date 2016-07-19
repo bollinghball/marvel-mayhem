@@ -1,10 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900);
+
 @font-face {
 	font-family: 'BackIssues';
 	src: url('assets/fonts/BackIssuesBB_reg.ttf');
 }
 
+@font-face {
+	font-family: 'KomiKax';
+	src: url('assets/fonts/KOMIKAX_.ttf');
+}
+
+@font-face {
+	font-family: 'Sunshine';
+	src: url('assets/fonts/Mr-Sunshine-2.ttf')
+
+}
+
 body {
-	font-family: 'BackIssues';
+	font-family: 'Sunshine';
 	background: rgba(255,229,173,1);
 	background: -moz-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,229,173,1)), color-stop(100%, rgba(245,151,0,1)));
@@ -19,12 +32,14 @@ body {
 .halftone-overlay {
 	background-image: url('assets/images/halftone.png');
 	background-size: 4px;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	width: 100%;
+	height:100%;
+	z-index: 0;
 }
 
-.page-overlay {
+.page-content {
 	position: relative;
 	z-index: 2;
 }
@@ -74,7 +89,20 @@ body {
 	width: 100%;
 	position: absolute;
 	top: 100px;
-	z-index: 1;
+	z-index: -1;
+
+	> h2 {
+		color: black;
+		font-family: 'Titillium Web';
+		font-size: 38px;
+		text-transform: uppercase;
+		font-weight: 900;
+		margin: 0 0 20px 0;
+		-webkit-text-fill-color: #e93f33; /* Will override color (regardless of order) */
+		-webkit-text-stroke-width: 2px;
+		-webkit-text-stroke-color: black;
+		text-shadow: 3px 2px black;
+	}
 
 }
 
@@ -162,6 +190,10 @@ body {
 	width: 30%;
 }
 
+.list-region {
+	margin-top: 30px;
+}
+
 .character-list {
 	text-decoration: none;
 	margin: 0;
@@ -174,12 +206,15 @@ body {
 		margin: 1em 0;
 
 		div {
-			margin-bottom: 1em;
+			margin-top: 1em;
 		}
 
 		img {
 			border: 1px solid white;
 			border-radius: 50%;
+			-webkit-box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.56);
+			-moz-box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.56);
+			box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.56);
 		}
 	}
 }
@@ -203,6 +238,7 @@ body {
 
 		> div {
 			font-size: 0px;
+			height: 200px;
 		}
 
 		> div > img {
@@ -218,7 +254,16 @@ body {
 
 			> h2 {
 				margin: 0;
-				font-size: 20px;
+				font-size: 30px;
+				color: black;
+				letter-spacing: .03em;
+				font-family: 'Titillium Web';
+				text-transform: uppercase;
+				font-weight: 900;
+				-webkit-text-fill-color: #e93f33; /* Will override color (regardless of order) */
+				-webkit-text-stroke-width: 2px;
+				-webkit-text-stroke-color: black;
+				text-shadow: 3px 2px black;
 			}
 
 			> p {
@@ -253,14 +298,31 @@ body {
 
 }
 
-.log-region > div{
+.send {
+	border-radius: 0;
+	font-family: 'BackIssues';
+	background-color: #e93f33;
+	border: 2px solid black;
+	height: 3em;
+	line-height: 3em;
+	color: black;
+	padding: 0 1em;
+
+}
+
+.log-region {
 	width: 80%;
 	margin: 0 auto;
+	position: relative;
+}
+
+.log-region > div {	
 	background-color: white;
 	border: 1px solid black;
 	border-radius: 20px 20px 0 0;
 	height: 300px;
 	overflow: scroll;
+	padding-top: 30px;
 
 
 	.tabs {
@@ -268,6 +330,10 @@ body {
 		font-size: 0px;
 		height: 30px;
 		line-height: 30px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
 	}
 
 	button {
@@ -280,7 +346,7 @@ body {
 
 	.log-button {
 		background-color: white;
-		border-left: white;
+		border-left: black;
 		border-radius: 20px 0 0 0;
 	}
 
