@@ -29,7 +29,7 @@ var BattleView = Backbone.View.extend({
 
 				$(".send").click(function() {
     				$('html, body').animate({
-        				scrollTop: $(".nav-region").offset().top
+        				scrollTop: $(".log-region").offset().top
     				}, 500);
 				});
 			}
