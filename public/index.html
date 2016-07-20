@@ -22,22 +22,39 @@
 	.wins {
 		height: 200px;
 		background-color: red;
+		display: inline-block;
+		width: 50%;
 	}
 
 	.losses {
 		height: 200px;
 		background-color: black;
+		display: inline-block;
+		width: 50%;
 
 	}
 
-	.labels > li {
-		height: 200px;
-		background-color: black;
+	.labels {
+		width: 40%;
+		display: inline-block;
 	}
 
+	.labels > ul {
+		font-size: 14px;
+	}
 
-	.strength, .durability, .energy, .intelligence, .speed, .fighting {
+	.stats {
+		font-size: 0;
+	}
+
+	.stats-values {
+		width: 60%;
+		display: inline-block;
+	}
+
+	.value {
 		height: 20px;
+		margin: 20px 0;
 	}
 
 	.strength {
@@ -62,6 +79,11 @@
 
 	.fighting {
 		background-color: yellow;
+	}
+
+	.details > div {
+		font-size: 0;
+		text-align: center;
 	}
 
 

@@ -11,7 +11,7 @@ var BattleView = Backbone.View.extend({
 
 	events: {
 		'click .battle-button': 'handleBattleClick',
-		'click .battle-again': 'handleBattleClick'
+		'click .battle-again': 'handleBattleAgainClick'
 	},
 
 	initialize: function () {
@@ -47,6 +47,7 @@ var BattleView = Backbone.View.extend({
 
 	removeBattle: function() {
 		$('.battle-again').removeClass('active');
+		this.$('.log-region').empty();
 	},
 
 	render: function () {
@@ -125,6 +126,12 @@ var BattleView = Backbone.View.extend({
 		var _this = this;
 		_this.left.toggleActive();
 		_this.right.toggleActive();
+	},
+
+	handleBattleAgainClick: function () {
+		var _this = this;
+		_this.left.removeCharacter();
+		_this.right.removeCharacter();
 	},
 
 	handleBattleClick: function () {

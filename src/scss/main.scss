@@ -1,10 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900);
+
 @font-face {
 	font-family: 'BackIssues';
 	src: url('assets/fonts/BackIssuesBB_reg.ttf');
 }
 
+@font-face {
+	font-family: 'KomiKax';
+	src: url('assets/fonts/KOMIKAX_.ttf');
+}
+
+@font-face {
+	font-family: 'SmartKid';
+	src: url('assets/fonts/Smart_Kid.otf')
+
+}
+
 body {
-	font-family: 'BackIssues';
+	font-family: 'SmartKid';
 	background: rgba(255,229,173,1);
 	background: -moz-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,229,173,1)), color-stop(100%, rgba(245,151,0,1)));
@@ -13,6 +26,22 @@ body {
 	background: -ms-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: radial-gradient(ellipse at center, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe5ad', endColorstr='#f59700', GradientType=1 );
+	margin: 0;
+}
+
+.halftone-overlay {
+	background-image: url('assets/images/halftone.png');
+	background-size: 4px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height:100%;
+	z-index: 0;
+}
+
+.page-content {
+	position: relative;
+	z-index: 2;
 }
 
 .nav {
@@ -45,7 +74,7 @@ body {
 		border: none;
 		background-color: transparent;
 		outline: none;
-		font-family: 'BackIssues';
+		font-family: 'KomiKax';
 		font-size: 20px;
 		letter-spacing: .1em;
 
@@ -61,6 +90,19 @@ body {
 	position: absolute;
 	top: 100px;
 	z-index: -1;
+
+	> h2 {
+		color: black;
+		font-family: 'Titillium Web';
+		font-size: 38px;
+		text-transform: uppercase;
+		font-weight: 900;
+		margin: 0 0 20px 0;
+		-webkit-text-fill-color: #e93f33; /* Will override color (regardless of order) */
+		-webkit-text-stroke-width: 2px;
+		-webkit-text-stroke-color: black;
+		text-shadow: 3px 2px black;
+	}
 
 }
 
@@ -103,11 +145,17 @@ body {
 			width: 80%;
 			height: 2.5em;
 			padding: .2em;
+			border: 2px solid black;
 		}
 
 		.search-button {
 			height: 3.2em;
 			padding: 1em 2em;
+			border-radius: 0;
+			font-family: 'BackIssues';
+			background-color: #e93f33;
+			border: 2px solid black;
+			color: black;
 		}
 	}
 
@@ -149,12 +197,17 @@ body {
 	width: 30%;
 }
 
+
+.list-region {
+	margin-top: 30px;
+}
 .battle-again {
 	display: none;
 }
 
 .battle-again.active {
 	display: block;
+
 }
 
 .character-list {
@@ -169,15 +222,20 @@ body {
 		margin: 1em 0;
 
 		div {
-			margin-bottom: 1em;
+			margin-top: 1em;
 		}
 
 		img {
 			border: 1px solid white;
 			border-radius: 50%;
+			-webkit-box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.56);
+			-moz-box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.56);
+			box-shadow: 1px 1px 35px 0px rgba(0,0,0,0.56);
 		}
 	}
 }
+
+
 
 .modal {
 	display: none;
@@ -198,6 +256,7 @@ body {
 
 		> div {
 			font-size: 0px;
+			height: 200px;
 		}
 
 		> div > img {
@@ -213,7 +272,16 @@ body {
 
 			> h2 {
 				margin: 0;
-				font-size: 20px;
+				font-size: 30px;
+				color: black;
+				letter-spacing: .03em;
+				font-family: 'Titillium Web';
+				text-transform: uppercase;
+				font-weight: 900;
+				-webkit-text-fill-color: #e93f33; /* Will override color (regardless of order) */
+				-webkit-text-stroke-width: 2px;
+				-webkit-text-stroke-color: black;
+				text-shadow: 3px 2px black;
 			}
 
 			> p {
@@ -223,11 +291,12 @@ body {
 		}
 
 		.stats {
-			font-size: 14px;
+			font-size: 0;
 
 			ul {
 				list-style: none;
 				padding: 0;
+				font-size: 14px;
 
 				li {
 
@@ -248,12 +317,31 @@ body {
 
 }
 
-.log-region > div{
+.send {
+	border-radius: 0;
+	font-family: 'BackIssues';
+	background-color: #e93f33;
+	border: 2px solid black;
+	height: 3em;
+	line-height: 3em;
+	color: black;
+	padding: 0 1em;
+
+}
+
+.log-region {
 	width: 80%;
 	margin: 0 auto;
+	position: relative;
+}
+
+.log-region > div {	
 	background-color: white;
 	border: 1px solid black;
-	border-radius: 20px 20px 0 0;;
+	border-radius: 20px 20px 0 0;
+	height: 300px;
+	overflow: scroll;
+	padding-top: 30px;
 
 
 	.tabs {
@@ -261,6 +349,15 @@ body {
 		font-size: 0px;
 		height: 30px;
 		line-height: 30px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		display: none;
+	}
+
+	.tabs.active {
+		display: block;
 	}
 
 	button {
@@ -269,16 +366,12 @@ body {
 		border-bottom: none;
 		border-radius: 0 20px 0 0;
 		line-height: 30px;
-		display: none;
-	}
-
-	button.active {	
 		display: inline-block;
 	}
 
 	.log-button {
 		background-color: white;
-		border-left: white;
+		border-left: black;
 		border-radius: 20px 0 0 0;
 	}
 
@@ -287,7 +380,7 @@ body {
 	}
 
 	.results {
-		
+
 	}
 
 	.leftresult,
@@ -317,7 +410,7 @@ body {
 		}
 	}
 
-	.active {
+	.tab.active {
 		display: block;
 	}
 }
