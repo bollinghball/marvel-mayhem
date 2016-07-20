@@ -78,7 +78,6 @@ var BattleLogView = Backbone.View.extend({
 	start: function () {
 		var results = BattleManager.narrativeBattle(this.left.stats.toJSON(), this.right.stats.toJSON());
 		var winner = results.winner.id;
-					console.log(results);
 
 		var battle = new BattleModel({
 			left: this.left.get('id'),
