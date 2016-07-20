@@ -47,6 +47,7 @@ var BattleView = Backbone.View.extend({
 
 	removeBattle: function() {
 		$('.battle-again').removeClass('active');
+		this.$('.log-region').empty();
 	},
 
 	render: function () {

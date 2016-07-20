@@ -16,10 +16,14 @@ var BattleLogView = Backbone.View.extend({
 
 	bindEvents: function(){
 		$('.log-button').click(function(){
+			$('.log-button').addClass('active');
+			$('.resultsbutton').removeClass('active');
 			$('.log').addClass('active');
 			$('.results').removeClass('active');
 		})
 		$('.results-button').click(function(){
+			$('.log-button').removeClass('active');
+			$('.results-button').addClass('active');
 			$('.results').addClass('active');
 			$('.log').removeClass('active');
 		})
@@ -106,7 +110,7 @@ var BattleLogView = Backbone.View.extend({
 				healthbars[0].setAttribute('data-health', parseInt(results.fightData[x].defenderWounds));
 			};
 			$('.log ul').prepend(li);
-		}, 1000);
+		}, 1);
 
 	}
 
