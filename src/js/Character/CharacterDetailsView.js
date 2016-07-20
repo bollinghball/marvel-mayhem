@@ -17,7 +17,7 @@ var CharacterDetailsView = Backbone.View.extend({
 		var thumbnail = this.model.get('thumbnail');
 		this.$el.html(this.template({
 			name: this.model.get('name'),
-			thumbnail: thumbnail.path + '/portrait_uncanny' + '.' + thumbnail.extension,
+			thumbnail: thumbnail.path + '/square_fantastic' + '.' + thumbnail.extension,
 			description: this.model.get('description'),
 			hasStats: this.model.stats.loaded,
 			stats: this.model.stats.toJSON(),

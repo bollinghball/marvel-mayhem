@@ -1,6 +1,5 @@
 var Backbone = require('backbone');
 
-
 var BattleModel = Backbone.Model.extend({
 
 	defaults: {

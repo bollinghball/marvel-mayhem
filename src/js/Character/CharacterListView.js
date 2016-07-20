@@ -9,7 +9,7 @@ var CharacterListView = Backbone.View.extend({
 
 	initialize: function (options) {
 		this.onItemClick = options.onItemClick;
-		this.collection.on('update', this.render.bind(this));
+		this.collection.on('update add', this.render.bind(this));
 	},
 
 	render: function () {
