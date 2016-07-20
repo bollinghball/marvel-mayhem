@@ -11,13 +11,13 @@
 }
 
 @font-face {
-	font-family: 'Sunshine';
-	src: url('assets/fonts/Mr-Sunshine-2.ttf')
+	font-family: 'SmartKid';
+	src: url('assets/fonts/Smart_Kid.otf')
 
 }
 
 body {
-	font-family: 'Sunshine';
+	font-family: 'SmartKid';
 	background: rgba(255,229,173,1);
 	background: -moz-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,229,173,1)), color-stop(100%, rgba(245,151,0,1)));
@@ -74,7 +74,7 @@ body {
 		border: none;
 		background-color: transparent;
 		outline: none;
-		font-family: 'BackIssues';
+		font-family: 'KomiKax';
 		font-size: 20px;
 		letter-spacing: .1em;
 
@@ -145,11 +145,17 @@ body {
 			width: 80%;
 			height: 2.5em;
 			padding: .2em;
+			border: 2px solid black;
 		}
 
 		.search-button {
 			height: 3.2em;
 			padding: 1em 2em;
+			border-radius: 0;
+			font-family: 'BackIssues';
+			background-color: #e93f33;
+			border: 2px solid black;
+			color: black;
 		}
 	}
 
@@ -273,11 +279,12 @@ body {
 		}
 
 		.stats {
-			font-size: 14px;
+			font-size: 0;
 
 			ul {
 				list-style: none;
 				padding: 0;
+				font-size: 14px;
 
 				li {
 

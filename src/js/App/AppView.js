@@ -30,6 +30,7 @@ var AppView = Backbone.View.extend({
 				<div class="nav-region"></div>
 				<div class="page-region"></div>
 				<div class="modal-region"></div>
+				<footer></footer>
 			</div>
 		`; 
 	},
