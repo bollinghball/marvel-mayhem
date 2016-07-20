@@ -97,6 +97,7 @@ var BattleLogView = Backbone.View.extend({
 				_this.trigger('finished');
 				_this.displayResults(results);
 				$('.tabs').toggleClass('active');
+				$('.results-button').click();
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');
