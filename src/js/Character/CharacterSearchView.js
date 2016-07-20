@@ -1,7 +1,9 @@
 var Backbone = require('backbone');
 
+var CharacterDetailsView = require('../Character/CharacterDetailsView');
 var CharacterCollection = require('./CharacterCollection');
 var CharacterListView = require('./CharacterListView');
+var battle = require('../Battle/controller');
 
 var CharacterSearchView = Backbone.View.extend({
 

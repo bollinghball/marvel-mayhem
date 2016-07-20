@@ -1,10 +1,8 @@
 var Backbone = require('backbone');
 
-var CharacterModel = require('./CharacterModel');
 var BattleCollection = require('../Battle/BattleCollection');
 var CharacterCollection = require('./CharacterCollection');
 var CharacterPageView = require('./CharacterPageView');
-var CharacterDetailsView = require('./CharacterDetailsView');
 
 module.exports = {
 
