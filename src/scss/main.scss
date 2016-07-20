@@ -17,7 +17,7 @@
 }
 
 body {
-	font-family: 'SmartKid', sans-serif;
+	font-family: 'BackIssues', sans-serif;
 	background: rgba(255,229,173,1);
 	background: -moz-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,229,173,1)), color-stop(100%, rgba(245,151,0,1)));
@@ -75,8 +75,14 @@ body {
 		background-color: transparent;
 		outline: none;
 		font-family: 'KomiKax';
-		font-size: 20px;
+		font-size: 14px;
 		letter-spacing: .1em;
+		padding: .5em 1em;
+		border-radius: 0;
+		background-color: #e93f33;
+		border: 2px solid black;
+		box-shadow: 2px 4px black;
+		color: black;
 
 		&:hover {
 			text-shadow: 2px 2px #ff0000;
@@ -128,6 +134,7 @@ body {
 			color: black;
 			letter-spacing: .03em;
 			font-family: 'Titillium Web';
+			font-size: 30px;
 			text-transform: uppercase;
 			font-weight: 900;
 			-webkit-text-fill-color: #e93f33; /* Will override color (regardless of order) */
@@ -189,6 +196,7 @@ body {
 
 			> div {
 				background-size: cover;
+				background-position: center;
 				height: inherit;
 			}
 		}

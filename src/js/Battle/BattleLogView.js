@@ -17,7 +17,7 @@ var BattleLogView = Backbone.View.extend({
 	bindEvents: function(){
 		$('.log-button').click(function(){
 			$('.log-button').addClass('active');
-			$('.resultsbutton').removeClass('active');
+			$('.results-button').removeClass('active');
 			$('.log').addClass('active');
 			$('.results').removeClass('active');
 		})
@@ -31,23 +31,27 @@ var BattleLogView = Backbone.View.extend({
 
 	displayResults: function(res){
 		var i = $('<img/>');
-		i.attr("src", this.left.getThumbnail());
+		i.attr("src", this.left.getThumbnail('standard_fantastic'));
 		$('.leftresult').append(i);
 		var j = $('<img/>');
-		j.attr("src", this.right.getThumbnail());
+		j.attr("src", this.right.getThumbnail('standard_fantastic'));
 		$('.rightresult').append(j);
 
 		var result = $('<div/>');
+		var i = $('<img/>')
+		result.append(i);
 
 		if(res.winner === "draw"){
-			result.text("draw");
+			// result.text("draw");
 			result.css("text-align", "center");
 		} else {
-			result.text("winner");
+			// result.text("winner");
 			if (res.winner.name === this.left.attributes.name){
 				result.css("text-align", "left");
+				j.attr('data-outcome', 'loser')
 			} else {
 				result.css("text-align", "right");
+				i.attr('data-outcome', 'loser')
 			}
 		}
 
@@ -97,6 +101,7 @@ var BattleLogView = Backbone.View.extend({
 				_this.trigger('finished');
 				_this.displayResults(results);
 				$('.tabs').toggleClass('active');
+				$('.results-button').click();
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');
