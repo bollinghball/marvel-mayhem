@@ -17,7 +17,7 @@
 }
 
 body {
-	font-family: 'SmartKid';
+	font-family: 'SmartKid', sans-serif;
 	background: rgba(255,229,173,1);
 	background: -moz-radial-gradient(center, ellipse cover, rgba(255,229,173,1) 0%, rgba(245,151,0,1) 100%);
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,229,173,1)), color-stop(100%, rgba(245,151,0,1)));
@@ -125,6 +125,15 @@ body {
 		
 		h3 {
 			text-align: center;
+			color: black;
+			letter-spacing: .03em;
+			font-family: 'Titillium Web';
+			text-transform: uppercase;
+			font-weight: 900;
+			-webkit-text-fill-color: #e93f33; /* Will override color (regardless of order) */
+			-webkit-text-stroke-width: 2px;
+			-webkit-text-stroke-color: black;
+			text-shadow: 3px 2px black;
 		}
 
 		.search {
@@ -138,7 +147,7 @@ body {
 		.search-region {
 			text-align: center;
 			width: 80%;
-			margin: 2em auto;	
+			margin: 2em auto;
 		}
 
 		.search-input {
@@ -326,6 +335,7 @@ body {
 	line-height: 3em;
 	color: black;
 	padding: 0 1em;
+	margin-top: 20px;
 
 }
 
