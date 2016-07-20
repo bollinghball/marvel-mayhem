@@ -8,34 +8,9 @@ var CharacterDetailsView = require('../Character/CharacterDetailsView');
 var battle = require('../Battle/controller');
 
 var HomeView = Backbone.View.extend({
-	
-	initialize: function (options) {
-		var battles = options.battles;
-		this.topWinnersView = new TopWinnersView({
-			collection: battles,
-			onItemClick: function (model) {
-				var detailView = new CharacterDetailsView({
-					model: model,
-					onSendToBattleClick: function () {
-						// Show the battle page with the left slot populated
-						battle.showBattlePage(model.get('id'));
-						// Update the URL manually
-						Backbone.history.navigate('battle/' + model.get('id'));
-						// Hide the modal
-						Backbone.trigger('modal:hide');
-					}
-				});
-				// Show the modal with the corresponding view
-				Backbone.trigger('modal:show', detailView);
-			}
-		});
-	},
 
 	render: function () {
 		this.$el.html(this.template());
-		this.topWinnersView.render();
-		this.$('.recent-battles').append(this.topWinnersView.$el);
-
 	},
 
 	template: function () {
@@ -43,7 +18,6 @@ var HomeView = Backbone.View.extend({
 			<div class="home">
 				<div class="home-banner"></div>
 				<h2 class="headline">Battle your favorite Marvel characters in a head-to-head showdown</h2>
-				<div class="recent-battles"></div>
 			</div>
 		`;
 	}

@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var $ = require('jquery');
+var TopWinnersView = require('./TopWinnersView');
 var CharacterDetailsView = require('../Character/CharacterDetailsView');
 var CharacterSearchView = require('../Character/CharacterSearchView');
 var BattleSlotView = require('./BattleSlotView');
@@ -14,8 +15,32 @@ var BattleView = Backbone.View.extend({
 		'click .battle-again': 'handleBattleAgainClick'
 	},
 
-	initialize: function () {
+	initialize: function (options) {
 		var _this = this;
+
+		var battles = options.battles;
+
+		this.topWinnersView = new TopWinnersView({
+			collection: battles,
+			onItemClick: function (model) {
+				var detailView = new CharacterDetailsView({
+					model: model,
+					onSendToBattleClick: function () {
+						_this.addToSlot(model);
+						Backbone.trigger('modal:hide');
+					}
+				});
+
+				// Show the modal with the corresponding view
+				Backbone.trigger('modal:show', detailView);
+
+				$(".send").click(function() {
+    				$('html, body').animate({
+        				scrollTop: $(".battle-button").offset().top
+    				}, 500);
+				});
+			}
+		});
 
 		this.searchView = new CharacterSearchView({
 			onItemClick: function (model) {
@@ -30,7 +55,7 @@ var BattleView = Backbone.View.extend({
 
 				$(".send").click(function() {
     				$('html, body').animate({
-        				scrollTop: $(".log-region").offset().top
+        				scrollTop: $(".battle-button").offset().top
     				}, 500);
 				});
 			}
@@ -56,6 +81,7 @@ var BattleView = Backbone.View.extend({
 		this.left.render();
 		this.right.render();
 		this.searchView.render();
+		this.topWinnersView.render();
 
 		this.$('.battle-slots-region')
 			.append(this.left.$el)
@@ -63,12 +89,18 @@ var BattleView = Backbone.View.extend({
 
 		this.$('.search-region')
 			.append(this.searchView.$el);
+
+		this.$('.top-winners-region')
+			.append(this.topWinnersView.$el);
 	},
 
 	template: function () {
 		return `
 			<div class="battle-slots-region cf"></div>
+			<h3 class="title">Find A Character To Battle</h3>
 			<div class="search-region"></div>
+			<h3 class="title">Top Battlers</h3>
+			<div class="top-winners-region"></div>
 			<button class="battle-button">LET'S BATTLE!</button>
 			<div class="log-region"></div>
 			<button class="battle-again">LET'S DO ANOTHER BATTLE!</button>
@@ -97,11 +129,13 @@ var BattleView = Backbone.View.extend({
 				_this.searchView.hide();
 			}, 500);
 			this.$('.battle-button').addClass('active');
+			this.$('h3').removeClass('active');
 		} else {
 			setTimeout(function () {
 				_this.searchView.show();
 			}, 500);
 			this.$('.battle-button').removeClass('active');
+			this.$('h3').addClass('active');
 		}
 	},
 

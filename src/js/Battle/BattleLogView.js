@@ -38,16 +38,20 @@ var BattleLogView = Backbone.View.extend({
 		$('.rightresult').append(j);
 
 		var result = $('<div/>');
+		var i = $('<img/>')
+		result.append(i);
 
 		if(res.winner === "draw"){
-			result.text("draw");
+			// result.text("draw");
 			result.css("text-align", "center");
 		} else {
-			result.text("winner");
+			// result.text("winner");
 			if (res.winner.name === this.left.attributes.name){
 				result.css("text-align", "left");
+				j.attr('data-outcome', 'loser')
 			} else {
 				result.css("text-align", "right");
+				i.attr('data-outcome', 'loser')
 			}
 		}
 

@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 
+var BattleCollection = require('./BattleCollection');
 var CharacterModel = require('../Character/CharacterModel');
 var BattleView = require('./BattleView');
 
@@ -9,7 +10,11 @@ module.exports = {
 		var leftModel;
 		var rightModel;
 
-		var battleView = new BattleView();
+		var battleCollection = new BattleCollection();
+
+		battleCollection.fetch();
+
+		var battleView = new BattleView({ battles: battleCollection });
 
 		if (left) {
 			leftModel = new CharacterModel({ id: left });
