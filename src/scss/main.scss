@@ -139,13 +139,22 @@ body {
 
 }
 
-.battle-button {
+.battle-button,
+.battle-again {
 	display: block;
 	text-align: center;
 	height: 5em;
 	background-color: red;
 	margin: 2em auto;
 	width: 30%;
+}
+
+.battle-again {
+	display: none;
+}
+
+.battle-again.active {
+	display: block;
 }
 
 .character-list {
@@ -275,6 +284,27 @@ body {
 
 	.tab {
 		display: none;
+	}
+
+	.results {
+		
+	}
+
+	.leftresult,
+	.rightresult {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		padding-top: 5px;
+		width: 49%;
+	}
+
+	.leftresult img,
+	.rightresult img {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		width: 100%;
 	}
 
 	.log {
