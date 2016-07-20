@@ -110,7 +110,7 @@ var BattleLogView = Backbone.View.extend({
 				healthbars[0].setAttribute('data-health', parseInt(results.fightData[x].defenderWounds));
 			};
 			$('.log ul').prepend(li);
-		}, 1);
+		}, 1000);
 
 	}
 
