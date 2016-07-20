@@ -17,7 +17,7 @@ var BattleLogView = Backbone.View.extend({
 	bindEvents: function(){
 		$('.log-button').click(function(){
 			$('.log-button').addClass('active');
-			$('.resultsbutton').removeClass('active');
+			$('.results-button').removeClass('active');
 			$('.log').addClass('active');
 			$('.results').removeClass('active');
 		})
