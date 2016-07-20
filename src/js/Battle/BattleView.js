@@ -71,7 +71,7 @@ var BattleView = Backbone.View.extend({
 			<div class="search-region"></div>
 			<button class="battle-button">LET'S BATTLE!</button>
 			<div class="log-region"></div>
-			<button class="battle-again">LET'S BATTLE AGAIN!</button>
+			<button class="battle-again">LET'S DO ANOTHER BATTLE!</button>
 		`;
 	},
 
