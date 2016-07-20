@@ -31,10 +31,10 @@ var BattleLogView = Backbone.View.extend({
 
 	displayResults: function(res){
 		var i = $('<img/>');
-		i.attr("src", this.left.getThumbnail());
+		i.attr("src", this.left.getThumbnail('standard_fantastic'));
 		$('.leftresult').append(i);
 		var j = $('<img/>');
-		j.attr("src", this.right.getThumbnail());
+		j.attr("src", this.right.getThumbnail('standard_fantastic'));
 		$('.rightresult').append(j);
 
 		var result = $('<div/>');
@@ -97,6 +97,7 @@ var BattleLogView = Backbone.View.extend({
 				_this.trigger('finished');
 				_this.displayResults(results);
 				$('.tabs').toggleClass('active');
+				$('.results-button').click();
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');
