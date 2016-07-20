@@ -25,6 +25,33 @@ var BattleLogView = Backbone.View.extend({
 		})
 	},
 
+	displayResults: function(res){
+		var i = $('<img/>');
+		i.attr("src", this.left.getThumbnail());
+		$('.leftresult').append(i);
+		var j = $('<img/>');
+		j.attr("src", this.right.getThumbnail());
+		$('.rightresult').append(j);
+
+		var result = $('<div/>');
+
+		if(res.winner === "draw"){
+			result.text("draw");
+			result.css("text-align", "center");
+		} else {
+			result.text("winner");
+			if (res.winner.name === this.left.attributes.name){
+				result.css("text-align", "left");
+			} else {
+				result.css("text-align", "right");
+			}
+		}
+
+		result.css('margin', '0 15%');
+
+		$('.results').append(result);
+	},
+
 	template: function () {
 		return `
 			<div class="tabs cf">
@@ -35,6 +62,10 @@ var BattleLogView = Backbone.View.extend({
 				<ul></ul>
 			</div>
 			<div class="tab results">
+				<div class = "leftresult">
+				</div>
+				<div class = "rightresult">
+				</div>
 			</div>
 				
 		`;
@@ -43,8 +74,7 @@ var BattleLogView = Backbone.View.extend({
 	start: function () {
 		var results = BattleManager.narrativeBattle(this.left.stats.toJSON(), this.right.stats.toJSON());
 		var winner = results.winner.id;
-
-		console.log(results);
+					console.log(results);
 
 		var battle = new BattleModel({
 			left: this.left.get('id'),
@@ -56,14 +86,14 @@ var BattleLogView = Backbone.View.extend({
 
 		var _this = this;
 		var healthbars = $('.health');
-		console.log($(healthbars[0]));
 
 		var x = -1;
 		var battleInterval = window.setInterval(function(){
 			x++;
 			if(x>results.fightData.length-2){
 				_this.trigger('finished');
-				$('.log-region button').toggleClass('active');
+				_this.displayResults(results);
+				$('.tabs').toggleClass('active');
 				clearInterval(battleInterval);
 			}
 			var li = $('<li/>');

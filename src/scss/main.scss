@@ -187,7 +187,8 @@ body {
 
 }
 
-.battle-button {
+.battle-button,
+.battle-again {
 	display: block;
 	text-align: center;
 	height: 5em;
@@ -196,8 +197,17 @@ body {
 	width: 30%;
 }
 
+
 .list-region {
 	margin-top: 30px;
+
+.battle-again {
+	display: none;
+}
+
+.battle-again.active {
+	display: block;
+
 }
 
 .character-list {
@@ -337,10 +347,18 @@ body {
 		font-size: 0px;
 		height: 30px;
 		line-height: 30px;
+<<<<<<< HEAD
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
+=======
+		display: none;
+	}
+
+	.tabs.active {
+		display: block;
+>>>>>>> a7e20ecfbb871a82220e9f535a30d02856def490
 	}
 
 	button {
@@ -349,10 +367,6 @@ body {
 		border-bottom: none;
 		border-radius: 0 20px 0 0;
 		line-height: 30px;
-		display: none;
-	}
-
-	button.active {	
 		display: inline-block;
 	}
 
@@ -364,6 +378,27 @@ body {
 
 	.tab {
 		display: none;
+	}
+
+	.results {
+
+	}
+
+	.leftresult,
+	.rightresult {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		padding-top: 5px;
+		width: 49%;
+	}
+
+	.leftresult img,
+	.rightresult img {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		width: 100%;
 	}
 
 	.log {

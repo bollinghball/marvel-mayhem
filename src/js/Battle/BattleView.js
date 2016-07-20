@@ -10,7 +10,8 @@ var BattleView = Backbone.View.extend({
 	className: 'battle',
 
 	events: {
-		'click .battle-button': 'handleBattleClick'
+		'click .battle-button': 'handleBattleClick',
+		'click .battle-again': 'handleBattleClick'
 	},
 
 	initialize: function () {
@@ -29,7 +30,7 @@ var BattleView = Backbone.View.extend({
 
 				$(".send").click(function() {
     				$('html, body').animate({
-        				scrollTop: $(".nav-region").offset().top
+        				scrollTop: $(".log-region").offset().top
     				}, 500);
 				});
 			}
@@ -40,6 +41,12 @@ var BattleView = Backbone.View.extend({
 		this.right = new BattleSlotView({
 			onRemove: this.checkReadyAndUpdateURL.bind(this)
 		});
+		this.listenTo(this.left, 'remove', this.removeBattle);
+		this.listenTo(this.right, 'remove', this.removeBattle);
+	},
+
+	removeBattle: function() {
+		$('.battle-again').removeClass('active');
 	},
 
 	render: function () {
@@ -63,6 +70,7 @@ var BattleView = Backbone.View.extend({
 			<div class="search-region"></div>
 			<button class="battle-button">LET'S BATTLE!</button>
 			<div class="log-region"></div>
+			<button class="battle-again">LET'S BATTLE AGAIN!</button>
 		`;
 	},
 
@@ -123,6 +131,7 @@ var BattleView = Backbone.View.extend({
 
 		var _this = this;
 
+		_this.removeBattle();
 		_this.toggleActive();
 
 		var left = this.left.model;
@@ -145,6 +154,9 @@ var BattleView = Backbone.View.extend({
 		battleLog.bindEvents();
 
 		this.listenTo(battleLog, 'finished', this.toggleActive)
+		this.listenTo(battleLog, 'finished', function(){
+			$('.battle-again').addClass('active');
+		})
 
 		function fetchLeft () {
 			left.stats.fetch({

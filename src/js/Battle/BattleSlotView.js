@@ -56,6 +56,7 @@ var BattleSlotView = Backbone.View.extend({
 	removeCharacter: function () {
 		if(this.active){
 			this.model = null;
+			this.trigger('remove');
 			this.render();
 			this.onRemove();
 		}

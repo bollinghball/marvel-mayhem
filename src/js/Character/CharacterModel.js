@@ -45,8 +45,12 @@ var CharacterModel = Backbone.Model.extend({
 	},
 
 	getWins: function () {
+<<<<<<< HEAD
 		var _this = this;
 
+=======
+		var _this = this
+>>>>>>> a7e20ecfbb871a82220e9f535a30d02856def490
 		var wins = this.battles.filter(function (battle) {
 			return battle.get('winner') === _this.get('id');
 		});
