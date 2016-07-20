@@ -57,12 +57,12 @@ var CharacterDetailsView = Backbone.View.extend({
 					</ul>
 				</div>
 				<div class="stats-values">
-					<div class="durability" style="width:${data.stats.durability / 7 * 100}%"></div>
-					<div class="energy" style="width:${data.stats.energy / 7 * 100}%"></div>
-					<div class="fighting" style="width:${data.stats.fighting / 7 * 100}%"></div>
-					<div class="intelligence" style="width:${data.stats.intelligence / 7 * 100}%"></div>
-					<div class="speed" style="width:${data.stats.speed / 7 * 100}%"></div>
-					<div class="strength" style="width:${data.stats.strength / 7 * 100}%"></div>
+					<div class="durability value" style="width:${data.stats.durability / 7 * 100}%"></div>
+					<div class="energy value" style="width:${data.stats.energy / 7 * 100}%"></div>
+					<div class="fighting value" style="width:${data.stats.fighting / 7 * 100}%"></div>
+					<div class="intelligence value" style="width:${data.stats.intelligence / 7 * 100}%"></div>
+					<div class="speed value" style="width:${data.stats.speed / 7 * 100}%"></div>
+					<div class="strength value" style="width:${data.stats.strength / 7 * 100}%"></div>
 				</div>
 			</div>
 
