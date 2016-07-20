@@ -32,7 +32,16 @@ app.get('/stats/:id', function (req, res) {
 });
 
 app.get('/battles', function (req, res) {
-	res.json(db.battles);
+	var battles = db.battles;
+	var id = parseInt(req.query.characterId);
+
+	if (id) {
+		battles = battles.filter(function (battle) {
+			return battle.left === id || battle.right === id;
+		});
+	}
+
+	res.json(battles);
 });
 
 app.post('/battles', function(req, res) {

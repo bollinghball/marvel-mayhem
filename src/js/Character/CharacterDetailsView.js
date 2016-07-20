@@ -71,7 +71,6 @@ var CharacterDetailsView = Backbone.View.extend({
 	},
 
 	sendToBattle: function () {
-		$('.character-list').empty();
 		this.onSendToBattleClick();
 	}
 

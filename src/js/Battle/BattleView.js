@@ -99,7 +99,7 @@ var BattleView = Backbone.View.extend({
 			<div class="battle-slots-region cf"></div>
 			<h3 class="title">Find A Character To Battle</h3>
 			<div class="search-region"></div>
-			<h3 class="title">Top Battlers</h3>
+			<h3 id="top-title">Top Battlers</h3>
 			<div class="top-winners-region"></div>
 			<button class="battle-button">LET'S BATTLE!</button>
 			<div class="log-region"></div>
@@ -129,13 +129,13 @@ var BattleView = Backbone.View.extend({
 				_this.searchView.hide();
 			}, 500);
 			this.$('.battle-button').addClass('active');
-			this.$('h3').removeClass('active');
+			this.hideTopWinners();
 		} else {
 			setTimeout(function () {
 				_this.searchView.show();
 			}, 500);
 			this.$('.battle-button').removeClass('active');
-			this.$('h3').addClass('active');
+			this.showTopWinners();
 		}
 	},
 
@@ -166,6 +166,17 @@ var BattleView = Backbone.View.extend({
 		var _this = this;
 		_this.left.removeCharacter();
 		_this.right.removeCharacter();
+		this.showTopWinners();
+	},
+
+	showTopWinners: function () {
+		this.$('h3').removeClass('inactive');
+		this.$('.top-winners').removeClass('inactive');
+	},
+
+	hideTopWinners: function () {
+		this.$('h3').addClass('inactive');
+		this.$('.top-winners').addClass('inactive');
 	},
 
 	handleBattleClick: function () {
