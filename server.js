@@ -52,7 +52,6 @@ app.post('/battles', function(req, res) {
 	db.battles.push(battle);
 
 	res.json(battle);
-
 });
 
 app.listen(process.env.PORT || 8000);

@@ -7,6 +7,8 @@ var api = require('../API/marvel');
 var CharacterModel = Backbone.Model.extend({
 
 	initialize: function () {
+		var _this = this;
+
 		this.stats = new StatsModel({ 
 			id: this.get('id') 
 		});
