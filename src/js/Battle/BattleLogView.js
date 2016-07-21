@@ -38,8 +38,8 @@ var BattleLogView = Backbone.View.extend({
 		$('.rightresult').append(j);
 
 		var result = $('<div/>');
-		var i = $('<img/>')
-		result.append(i);
+		var img = $('<img/>')
+		result.append(img);
 
 		if(res.winner === "draw"){
 			// result.text("draw");

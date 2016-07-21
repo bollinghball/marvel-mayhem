@@ -1,4 +1,4 @@
- var Backbone = require('backbone');
+var Backbone = require('backbone');
 
 var HomeView = require('./HomeView');
 var BattleCollection = require('../Battle/BattleCollection');
