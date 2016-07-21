@@ -6,6 +6,14 @@
 	<title></title>
 	<style type="text/css">
 
+	.title {
+		display: none;
+	}
+
+	.title.active {
+		display: block;
+	}
+
 	.battle-button {
 		display: none;
 	}
@@ -17,6 +25,12 @@
 	.slot-x {
 		border: 2px 2px solid black;
 		width: 100%;
+	}
+
+	.left-details {
+		width: 40%;
+		text-align: center;
+		display: inline-block;
 	}
 
 	.wins {
@@ -44,6 +58,7 @@
 	.labels {
 		width: 40%;
 		display: inline-block;
+		vertical-align: top;
 	}
 
 	.labels > ul {
@@ -60,8 +75,8 @@
 	}
 
 	.value {
-		height: 20px;
-		margin: 20px 0;
+		height: 30px;
+		margin-bottom: 6px;
 	}
 
 	.strength {
@@ -86,12 +101,6 @@
 
 	.fighting {
 		background-color: yellow;
-	}
-
-	.details > div {
-		font-size: 0;
-		text-align: center;
-		font-family:sans-serif;
 	}
 
 

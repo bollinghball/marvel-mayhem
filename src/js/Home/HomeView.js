@@ -10,28 +10,6 @@ var RecentBattlesView = require('../Battle/RecentBattlesView')
 var battle = require('../Battle/controller');
 
 var HomeView = Backbone.View.extend({
-	
-	initialize: function (options) {
-		var battles = options.battles;
-		this.topWinnersView = new TopWinnersView({
-			collection: battles,
-			onItemClick: function (model) {
-				var detailView = new CharacterDetailsView({
-					model: model,
-					onSendToBattleClick: function () {
-						// Show the battle page with the left slot populated
-						battle.showBattlePage(model.get('id'));
-						// Update the URL manually
-						Backbone.history.navigate('battle/' + model.get('id'));
-						// Hide the modal
-						Backbone.trigger('modal:hide');
-					}
-				});
-				// Show the modal with the corresponding view
-				Backbone.trigger('modal:show', detailView);
-			}
-		});
-	},
 
 	render: function () {
 		this.$el.html(this.template());
@@ -49,6 +27,7 @@ var HomeView = Backbone.View.extend({
 					<div class="leftresult"></div>
 					<div class="rightresult"></div>
 				</div>
+				<h3>Recent Battles</h3>
 			</div>
 		`;
 	}
