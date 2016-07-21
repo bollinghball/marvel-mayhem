@@ -166,6 +166,7 @@ var BattleView = Backbone.View.extend({
 		var _this = this;
 		_this.left.removeCharacter();
 		_this.right.removeCharacter();
+		$('.character-list').empty();
 		this.showTopWinners();
 	},
 
