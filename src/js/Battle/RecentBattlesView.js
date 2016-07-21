@@ -8,7 +8,12 @@ var $ = require('jquery');
 
 var RecentBattlesView = Backbone.View.extend({
 	initialize: function (options){
-		this.collection.on('update', this.load.bind(this));
+		var _this = this;
+		this.collection.fetch({
+			success: function(){
+				_this.load();
+			}
+		});
 	},
 
 	load: function(){
@@ -39,7 +44,9 @@ var RecentBattlesView = Backbone.View.extend({
 			}
 		});
 	},
+
 	render: function(){
+		this.$el.empty();
 		var i = $('<img/>');
 		i.attr("src", this.left.getThumbnail('standard_fantastic'));
 		$('.leftresult').append(i);

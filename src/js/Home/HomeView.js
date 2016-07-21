@@ -5,7 +5,8 @@ var Backbone = require('backbone');
 var BattleCollection = require('../Battle/BattleCollection');
 var TopWinnersView = require('../Battle/TopWinnersView');
 var CharacterDetailsView = require('../Character/CharacterDetailsView');
-var RecentBattlesView = require('../Battle/RecentBattlesView')
+var RecentBattlesView = require('../Battle/RecentBattlesView');
+var $ = require('jquery');
 
 var battle = require('../Battle/controller');
 
@@ -13,9 +14,8 @@ var HomeView = Backbone.View.extend({
 
 	render: function () {
 		this.$el.html(this.template());
-		this.topWinnersView.render();
-		this.recentBattlesView = new RecentBattlesView({collection: this.topWinnersView.collection});
-		this.$('.recent-battles').append(this.topWinnersView.$el);
+		var battleCollection = new BattleCollection();
+		this.recentBattlesView = new RecentBattlesView({collection: battleCollection});
 	},
 
 	template: function () {
