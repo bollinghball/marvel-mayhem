@@ -71,8 +71,8 @@ var RecentBattlesView = Backbone.View.extend({
 				i.attr('data-outcome', 'loser')
 			}
 		}
-
 		result.css('margin', '0 15%');
+		$('.recent-battles').append(result);
 	}
 });
 
