@@ -266,6 +266,10 @@ body {
 }
 
 
+.top-winners-region {
+	text-align: center;
+}
+
 
 .modal {
 	display: none;
@@ -371,7 +375,7 @@ body {
 
 .log-region {
 	width: 80%;
-	margin: 0 auto;
+	margin: 20px auto;
 	position: relative;
 }
 
@@ -466,6 +470,35 @@ body {
 
 	.tab.active {
 		display: block;
+	}
+}
+
+.recent-battles {
+	text-align: center;
+	position: relative;
+
+	img {
+		vertical-align: middle;
+		padding: 30px;
+	}
+
+	.leftresult, .rightresult {
+		display: inline-block;
+
+		> img {
+			border-radius: 50%;
+		}
+
+		img[data-outcome='loser'] {
+			opacity: 0.6;
+		}
+
+	}
+
+	.winnerstamp {
+		position: relative;
+		bottom: 350px;
+		width: 350px;
 	}
 }
 
