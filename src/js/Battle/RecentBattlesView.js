@@ -23,7 +23,7 @@ var RecentBattlesView = Backbone.View.extend({
 		console.log(battle);
 		this.left = new CharacterModel({id: battle.get('left')});
 		this.right = new CharacterModel({id: battle.get('right')});
-		this.winner = battle.get('winner');
+		this.winner = battle.get('winner'); 
 		
 		function checkReady () {
 			if (loaded === 2) {
