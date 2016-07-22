@@ -7,52 +7,64 @@ var CharacterCollection = require('../Character/CharacterCollection');
 var $ = require('jquery');
 
 var RecentBattlesView = Backbone.View.extend({
-	initialize: function (options){
+
+	initialize: function (x){
 		var _this = this;
+		this.collection = new BattleCollection();
 		this.collection.fetch({
 			success: function(){
-				_this.load();
+				_this.load(x);
 			}
 		});
 	},
 
-	load: function(){
+	load: function(x){
 		var _this = this;
 		var loaded = 0;
-		var battle = this.collection.at(this.collection.length-1);
-		console.log(battle);
-		this.left = new CharacterModel({id: battle.get('left')});
-		this.right = new CharacterModel({id: battle.get('right')});
-		this.winner = battle.get('winner');
-		
-		function checkReady () {
-			if (loaded === 2) {
-				_this.render();
+		var battle = this.collection.at(this.collection.length-x);
+		if(battle){
+			this.left = new CharacterModel({id: battle.get('left')});
+			this.right = new CharacterModel({id: battle.get('right')});
+			this.winner = battle.get('winner');
+			
+			function checkReady () {
+				if (loaded === 2) {
+					_this.render();
+				}
 			}
-		}
 
-		this.left.fetch({
-			success: function () {
-				loaded++;
-				checkReady();
-			}
-		});
-		this.right.fetch({
-			success: function () {
-				loaded++;
-				checkReady();
-			}
-		});
+			this.left.fetch({
+				success: function () {
+					loaded++;
+					checkReady();
+				}
+			});
+			this.right.fetch({
+				success: function () {
+					loaded++;
+					checkReady();
+				}
+			});
+		}
+	},
+
+	template: function(){
+		return `<div class="recent-battles">
+			<div class="leftresult"></div>
+			<img src="assets/images/vs.png"/>
+			<div class="rightresult"></div>
+		</div>`
 	},
 
 	render: function(){
 		this.$el.empty();
+		this.$el.html(this.template());
 		var i = $('<img/>');
 		i.attr("src", this.left.getThumbnail('standard_fantastic'));
-		$('.leftresult').append(i);
+		this.$('.leftresult').append(i);
 		var j = $('<img/>');
 		j.attr("src", this.right.getThumbnail('standard_fantastic'));
-		$('.rightresult').append(j);
+		this.$('.rightresult').append(j);
 
 		var result = $('<div/>');
 		var img = $('<img class="winnerstamp" src="assets/images/winner.png"/>')
@@ -72,7 +84,8 @@ var RecentBattlesView = Backbone.View.extend({
 			}
 		}
 		result.css('margin', '0 15%');
-		$('.recent-battles').append(result);
+		this.$('.recent-battles').append(result);
+
 	}
 });
 
