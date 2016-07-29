@@ -54,25 +54,27 @@ var RecentBattlesView = Backbone.View.extend({
 		j.attr("src", this.right.getThumbnail('standard_fantastic'));
 		$('.rightresult').append(j);
 
-		var result = $('<div/>');
-		var img = $('<img class="winnerstamp" src="assets/images/winner.png"/>')
-		result.append(img);
-
+		// var result = $('<div/>');
+		// var img = $('<img class="winnerstamp" src="assets/images/winner.png"/>')
+		// result.append(img);
 		if(this.winner === "draw"){
 			// result.text("draw");
-			result.css("text-align", "center");
+			// result.css("text-align", "center");
 		} else {
 			// result.text("winner");
-			if (this.winner === this.left.get('name')){
-				result.css("text-align", "left");
-				j.attr('data-outcome', 'loser')
+			if (this.winner === this.left.get('id')){
+				$('.leftresult').addClass('winner');
+				$('.rightresult').attr('data-outcome', 'loser');
+				// result.css("text-align", "left");
 			} else {
-				result.css("text-align", "right");
-				i.attr('data-outcome', 'loser')
+				$('.rightresult').addClass('winner');
+				$('.leftresult').attr('data-outcome', 'loser');
+				// result.css("text-align", "right");
+				// .attr('data-outcome', 'loser')
 			}
 		}
-		result.css('margin', '0 15%');
-		$('.recent-battles').append(result);
+		// result.css('margin', '0 15%');
+		// $('.recent-battles').append(result);
 	}
 });
 

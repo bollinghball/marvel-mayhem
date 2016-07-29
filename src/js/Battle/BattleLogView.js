@@ -37,27 +37,29 @@ var BattleLogView = Backbone.View.extend({
 		j.attr("src", this.right.getThumbnail('standard_fantastic'));
 		$('.rightresult').append(j);
 
-		var result = $('<div/>');
-		var img = $('<img class="winnerstamp" src="assets/images/winner.png"/>')
-		result.append(img);
-
+		// var result = $('<div/>');
+		// var img = $('<img class="winnerstamp" src="assets/images/winner.png"/>')
+		// result.append(img);
+		console.log(res.winner);
 		if(res.winner === "draw"){
 			// result.text("draw");
-			result.css("text-align", "center");
+			// result.css("text-align", "center");
 		} else {
 			// result.text("winner");
-			if (res.winner.name === this.left.attributes.name){
-				result.css("text-align", "left");
-				j.attr('data-outcome', 'loser')
+			if (res.winner.name === this.left.get('name')){
+				$('.leftresult').addClass('winner');
+				$('.rightresult').attr('data-outcome', 'loser');
+				// result.css("text-align", "left");
 			} else {
-				result.css("text-align", "right");
-				i.attr('data-outcome', 'loser')
+				$('.rightresult').addClass('winner');
+				$('.leftresult').attr('data-outcome', 'loser');
+				// result.css("text-align", "right");
+				// .attr('data-outcome', 'loser')
 			}
 		}
+		// result.css('margin', '0 15%');
 
-		result.css('margin', '0 15%');
-
-		$('.results').append(result);
+		// $('.results').append(result);
 	},
 
 	template: function () {
@@ -70,10 +72,9 @@ var BattleLogView = Backbone.View.extend({
 				<ul></ul>
 			</div>
 			<div class="tab results">
-				<div class = "leftresult">
-				</div>
-				<div class = "rightresult">
-				</div>
+				<div class="leftresult"></div>
+				<img class="vs" src="assets/images/vs.png"/>
+				<div class="rightresult"></div>
 			</div>
 				
 		`;

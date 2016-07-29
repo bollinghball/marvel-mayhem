@@ -44,6 +44,11 @@ var CharacterSearchView = Backbone.View.extend({
 		this.$el.addClass('hidden');
 	},
 
+	clear: function () {
+		this.collection.reset();
+		console.log(this.collection);
+	},
+
 	handleSearchClick: function () {
 		this.collection.fetch({
 			data: {
@@ -62,7 +67,7 @@ var CharacterSearchView = Backbone.View.extend({
 				}
 			});
 		
-		this.$('.search-input').val('')
+			this.$('.search-input').val('')
 		}
 	}
 

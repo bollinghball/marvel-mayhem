@@ -51,6 +51,7 @@ var BattleView = Backbone.View.extend({
 						Backbone.trigger('modal:hide');
 					}
 				});
+
 				Backbone.trigger('modal:show', detailView);
 
 				$(".send").click(function() {
@@ -108,6 +109,8 @@ var BattleView = Backbone.View.extend({
 	},
 
 	addToSlot: function (model) {
+		this.searchView.clear();
+
 		if (!this.left.model) {
 			this.left.setCharacter(model);
 		} else if (!this.right.model) {
@@ -171,6 +174,7 @@ var BattleView = Backbone.View.extend({
 	},
 
 	showTopWinners: function () {
+		this.topWinnersView.collection.fetch();
 		this.$('h3').removeClass('inactive');
 		this.$('.top-winners').removeClass('inactive');
 	},
