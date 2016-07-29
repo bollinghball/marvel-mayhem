@@ -14,8 +14,12 @@ var HomeView = Backbone.View.extend({
 
 	render: function () {
 		this.$el.html(this.template());
-		var battleCollection = new BattleCollection();
-		this.recentBattlesView = new RecentBattlesView({collection: battleCollection});
+		this.recentBattlesView = new RecentBattlesView(1);
+		this.$('.home').append(this.recentBattlesView.$el);
+		this.recentBattlesView2 = new RecentBattlesView(2);
+		this.$('.home').append(this.recentBattlesView2.$el);
+		this.recentBattlesView3 = new RecentBattlesView(3);
+		this.$('.home').append(this.recentBattlesView3.$el);
 	},
 
 	template: function () {
